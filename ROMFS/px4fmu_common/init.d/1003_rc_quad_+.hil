@@ -1,0 +1,15 @@
+#!nsh
+#
+# @name HIL Quadcopter +
+#
+# @type Simulation
+# @class Copter
+#
+# @maintainer Lorenz Meier <lorenz@px4.io>
+#
+
+sh /etc/init.d/rc.mc_defaults
+
+set MIXER quad_+
+
+set HIL yes
