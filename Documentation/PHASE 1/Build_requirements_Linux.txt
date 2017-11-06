@@ -1,0 +1,144 @@
+Build requirements for the customization of the PX4 firmware:
+
+DEVELOPMENT TOOL CHAIN IN LINUX:
+
+1. On the command prompt enter
+$ sudo usermod -a -G dialout $USER
+
+Logout and login again (the change is only made after a new login).
+
+2. Remove the modemmanager:
+
+Ubuntu comes with a serial modem manager which interferes heavily with any 
+robotics related use of a serial port (or USB serial). It can removed/deinstalled without side effects:
+
+$ sudo apt-get remove modemmanager
+
+3. Ninja Build System:
+
+Ninja is a faster build system than Make and the PX4 CMake generators support it. To install a recent version, download the binary and add it to your path:
+
+$ mkdir -p $HOME/ninja
+$ cd $HOME/ninja
+$ wget https://github.com/martine/ninja/releases/download/v1.6.0/ninja-linux.zip
+$ unzip ninja-linux.zip
+$ rm ninja-linux.zip
+$ exportline="export PATH=$HOME/ninja:\$PATH"
+$ if grep -Fxq "$exportline" ~/.profile; then echo nothing to do ; else echo $exportline >> ~/.profile; fi
+. ~/.profile
+
+4. Common Dependencies:
+
+Update the package list and install the following dependencies for all PX4 build targets.
+
+$ sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
+$ sudo apt-get update
+$ sudo apt-get install python-argparse git-core wget zip \
+    python-empy qtcreator cmake build-essential genromfs -y
+# required python packages
+$ sudo apt-get install python-dev -y
+$ sudo apt-get install python-pip
+$ sudo -H pip install pandas jinja2
+$ pip install pyserial
+
+5. FastRTPS installation:
+eProsima Fast RTPS is a C++ implementation of the RTPS (Real Time Publish Subscribe) protocol. FastRTPS is used, via the RTPS/ROS2 Interface: PX4-FastRTPS Bridge, to allow PX4 uORB topics to be shared with offboard components.
+The following instructions can be used to install the FastRTPS 1.5 binaries to your home directory.
+
+$ wget http://www.eprosima.com/index.php/component/ars/repository/eprosima-fast-rtps/eprosima-fast-rtps-1-5-0/eprosima_fastrtps-1-5-0-linux-tar-gz
+$ mv eprosima_fastrtps-1-5-0-linux-tar-gz eprosima_fastrtps-1-5-0-linux.tar.gz
+$ tar -xzf eprosima_fastrtps-1-5-0-linux.tar.gz eProsima_FastRTPS-1.5.0-Linux/
+$ tar -xzf eprosima_fastrtps-1-5-0-linux.tar.gz requiredcomponents
+$ tar -xzf requiredcomponents/eProsima_FastCDR-1.0.7-Linux.tar.gz
+$ cd eProsima_FastCDR-1.0.7-Linux; ./configure --libdir=/usr/lib; make; sudo make install
+$ cd ..
+$ cd eProsima_FastRTPS-1.5.0-Linux; ./configure --libdir=/usr/lib; make; sudo make install
+
+6. Simulation Dependencies:
+Install the dependencies for jMAVSim Simulation.
+
+$ sudo apt-get install ant openjdk-8-jdk openjdk-8-jre -y
+
+Install the dependencies for Gazebo Simulation.
+
+$ sudo apt-get install protobuf-compiler libeigen3-dev libopencv-dev -y
+$ sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+## Setup keys
+$ wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+## Update the debian database:
+$ sudo apt-get update -y
+## Install Gazebo8
+$ sudo apt-get install gazebo8 -y
+## For developers (who work on top of Gazebo) one extra package
+$ sudo apt-get install libgazebo8-dev
+
+7. NuttX-based Hardware
+Install the following dependencies to build for NuttX based hardware: Pixhawk, Pixfalcon, Pixracer, Pixhawk 3, Intel® Aero Ready to Fly Drone.
+
+$ sudo apt-get install python-serial openocd \
+    flex bison libncurses5-dev autoconf texinfo \
+    libftdi-dev libtool zlib1g-dev -y
+
+Remove any old versions of the arm-none-eabi toolchain.
+
+$ sudo apt-get remove gcc-arm-none-eabi gdb-arm-none-eabi binutils-arm-none-eabi gcc-arm-embedded
+$ sudo add-apt-repository --remove ppa:team-gcc-arm-embedded/ppa
+
+8. Execute the script below to install 5.4:
+
+$ pushd .
+$ cd ~
+$ wget https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q2-update/+download/gcc-arm-none-eabi-5_4-2016q2-20160622-linux.tar.bz2
+$ tar -jxf gcc-arm-none-eabi-5_4-2016q2-20160622-linux.tar.bz2
+$ exportline="export PATH=$HOME/gcc-arm-none-eabi-5_4-2016q2/bin:\$PATH"
+$ if grep -Fxq "$exportline" ~/.bash_profile; then echo nothing to do ; else echo $exportline >> ~/.profile; fi
+$ popd
+
+Run these commands to install the 32 bit support libraries (this might fail and can be skipped if running a 32 bit OS):
+
+$ sudo dpkg --add-architecture i386
+$ sudo apt-get update
+$ sudo apt-get install libc6:i386 libgcc1:i386 libstdc++5:i386 libstdc++6:i386
+$ sudo apt-get install gcc-4.6-base:i386
+Now restart your machine.
+
+9. Building PX4 software: 
+$ git clone https://github.com/PX4/Firmware.git
+
+10. $ cd Firmware
+11. $ make px4fmu-v2_default 
+Once this make command reaches 100% then it has successfully completed without any error
+
+BUILD COMMANDS FOR PIXHAWK VERSION BOARD:
+
+Pixhawk 1: make px4fmu-v2_default
+mRo Pixhawk: make px4fmu-v3_default
+Pixhawk 2: make px4fmu-v3_default
+Pixhawk Mini: make px4fmu-v3_default
+Pixhawk 3 Pro: make px4fmu-v4pro_default
+Pixhawk 4: make px4fmu-v5_default
+
+UPLOADING FIRMWARE (Flashing the board)
+
+Append upload to the make commands to upload the compiled binary to the autopilot hardware via USB. For example
+
+$ make px4fmu-v2_default upload
+
+You will get 100% Build target upload
+
+COMPILING IN A GRAPHICAL IDE:
+
+The PX4 system supports Qt Creator, Eclipse and Sublime Text.
+Qt Creator is the most user-friendly variant and hence the only officially supported IDE. 
+
+Qt Creator on Linux:
+Assume the cloned folder is named as Firmware. Now follow as per the procedures given below. 
+
+$ cd <path>/Firmware
+$ mkdir ../Firmware-build
+$ cd ../Firmware-build
+$ cmake ../Firmware -G "CodeBlocks - Unix Makefiles"
+
+Then load the CMakeLists.txt in the root firmware folder via File -> Open File or Project -> Select the CMakeLists.txt file.
+
+After loading, the 'play' button can be configured to run the project by selecting 'custom executable' in the run target configuration and entering 'make' as executable and 'upload' as argument.

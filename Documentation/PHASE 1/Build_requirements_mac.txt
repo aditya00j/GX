@@ -1,0 +1,72 @@
+DEVELOPMENT ENVIRONMENT ON MAC
+
+Mac OS X is the main development platform for PX4. The following instructions explain how to set up a development environment for building NuttX-based hardware (Pixhawk, etc.) and Simulation (jMAVSim/Gazebo) targets.
+
+1. COMMON TOOLS:
+
+After installing Homebrew, run these commands in your shell to install the common tools
+
+$ brew tap PX4/px4
+$ brew install px4-dev
+# Optional, but recommended additional simulation tools:
+$ brew install px4-sim
+
+If the installation outputs an error message about missing requirements follow the instructions. Your system will be missing Java and Quartz
+
+$ brew cask install xquartz java
+
+Install pip if you don't already have it and use it to install the required packages
+
+$ sudo easy_install pip
+$ sudo -H pip install pyserial empy pandas jinja2
+
+BUILDING PX4 SOFTWARE
+
+PX4 can be built on the console or in an IDE, for both simulated and hardware targets. 
+
+DOWNLOADING THE SOFTWARE AND FIRST BUILD
+
+For the first build we'll build for a simulated target using a console environment. This allows us to validate the system setup before moving on to real hardware and and IDE. 
+First bring up the terminal - On OS X, hit ⌘-space and search for 'terminal'. 
+
+$ mkdir -p ~/src
+$ cd ~/src
+$ git clone https://github.com/PX4/Firmware.git
+$ cd Firmware
+$ make px4fmu-v2_default
+
+Once this make command reaches 100% then it has successfully completed without any error
+
+BUILD COMMANDS FOR PIXHAWK VERSION BOARD:
+
+Pixhawk 1: make px4fmu-v2_default
+mRo Pixhawk: make px4fmu-v3_default
+Pixhawk 2: make px4fmu-v3_default
+Pixhawk Mini: make px4fmu-v3_default
+Pixhawk 3 Pro: make px4fmu-v4pro_default
+Pixhawk 4: make px4fmu-v5_default
+
+UPLOADING FIRMWARE (Flashing the board)
+
+Append upload to the make commands to upload the compiled binary to the autopilot hardware via USB. For example
+
+$ make px4fmu-v2_default upload
+
+You will get 100% Build target upload
+
+COMPILING IN A GRAPHICAL IDE:
+
+Before starting Qt Creator, the project file needs to be created:
+
+$ cd ~/src/Firmware
+$ mkdir -p build/creator
+$ cd build/creator
+$ cmake ../.. -G "CodeBlocks - Unix Makefiles"
+
+Set the Build path as ~/src/Firmware/build/creator and set the cmake path as "/usr/local/bin/cmake" and click "run cmake" button
+
+Then load the CMakeLists.txt in the root firmware folder via File -> Open File or Project -> Select the CMakeLists.txt file.
+
+After loading, the 'play' button can be configured to run the project by selecting 'custom executable' in the run target configuration and entering 'make' as executable and 'upload' as argument.
+
+
