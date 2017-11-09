@@ -1,4 +1,0 @@
-ekf2 start
-gnd_att_control start
-gnd_pos_control start
-land_detector start ugv
