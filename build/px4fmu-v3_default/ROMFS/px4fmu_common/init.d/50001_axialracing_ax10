@@ -1,0 +1,2 @@
+sh /etc/init.d/rc.axialracing_ax10_defaults
+set MIXER IO_pass
