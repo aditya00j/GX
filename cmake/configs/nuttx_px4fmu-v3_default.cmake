@@ -111,17 +111,7 @@ set(config_module_list
 	modules/local_position_estimator
 	modules/position_estimator_inav
 
-	#
-	# Vehicle Control
-	#
-	modules/fw_att_control
-	modules/fw_pos_control_l1
-	modules/gnd_att_control
-	modules/gnd_pos_control
-	modules/mc_att_control
-	modules/mc_pos_control
-	modules/vtol_att_control
-
+	
 	#
 	# Logging
 	#
@@ -162,25 +152,7 @@ set(config_module_list
 	platforms/nuttx
 	platforms/nuttx/px4_layer
 
-	#
-	# OBC challenge
-	#
-	examples/bottle_drop
-
-	#
-	# Rover apps
-	#
-	examples/rover_steering_control
-
-	#
-	# Segway
-	#
-	examples/segway
-
-	#
-	# Demo apps
-	#
-
+	
 	# Tutorial code from
 	# https://px4.io/dev/px4_simple_app
 	examples/px4_simple_app
@@ -193,13 +165,7 @@ set(config_module_list
 	# https://px4.io/dev/debug_values
 	examples/px4_mavlink_debug
 
-	# Tutorial code from
-	# https://px4.io/dev/example_fixedwing_control
-	examples/fixedwing_control
 
 	# Hardware test
 	examples/hwtest
-
-	# EKF
-	examples/ekf_att_pos_estimator
 )

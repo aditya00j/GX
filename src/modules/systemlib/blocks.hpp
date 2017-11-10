@@ -1,7 +1,6 @@
 /****************************************************************************
  *
- *   Copyright (c) 2012-2016 PX4 Development Team. All rights reserved.
- *         Author: David Sidrane <david_s5@nscdg.com>
+ *   Copyright (C) 2012 PX4 Development Team. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -33,57 +32,28 @@
  ****************************************************************************/
 
 /**
- * @file tap-v1_spi.c
+ * @file blocks.hpp
  *
- * Board-specific SPI functions.
+ * Controller library code
  */
 
-/************************************************************************************
- * Included Files
- ************************************************************************************/
+#pragma once
 
-#include <px4_config.h>
-
-#include <stdint.h>
-#include <stdbool.h>
-#include <debug.h>
-
-#include <nuttx/spi/spi.h>
-#include <arch/board/board.h>
-
-#include "up_arch.h"
-#include "chip.h"
-#include "stm32.h"
-#include "board_config.h"
-
-/************************************************************************************
- * Public Functions
- ************************************************************************************/
-
-/************************************************************************************
- * Name: stm32_spiinitialize
- *
- * Description:
- *   Called to configure SPI chip select GPIO pins for the AEROFC-v1 board.
- *
- ************************************************************************************/
-
-__EXPORT void stm32_spiinitialize(void)
-{
-#ifdef CONFIG_STM32_SPI1
-	px4_arch_configgpio(GPIO_SPI_CS_MPU6500);
-
-#endif
-}
-
-
-__EXPORT void stm32_spi1select(FAR struct spi_dev_s *dev, uint32_t devid, bool selected)
-{
-	/* SPI select is active low, so write !selected to select the device */
-	px4_arch_gpiowrite(GPIO_SPI_CS_MPU6500, !selected);
-}
-
-__EXPORT uint8_t stm32_spi1status(FAR struct spi_dev_s *dev, uint32_t devid)
-{
-	return SPI_STATUS_PRESENT;
-}
+#include "BlockDelay.hpp"
+#include "BlockDerivative.hpp"
+#include "BlockHighPass.hpp"
+#include "BlockIntegral.hpp"
+#include "BlockIntegralTrap.hpp"
+#include "BlockLimit.hpp"
+#include "BlockLimitSym.hpp"
+#include "BlockLowPass2.hpp"
+#include "BlockLowPass.hpp"
+#include "BlockLowPassVector.hpp"
+#include "BlockOutput.hpp"
+#include "BlockPD.hpp"
+#include "BlockP.hpp"
+#include "BlockPID.hpp"
+#include "BlockPI.hpp"
+#include "BlockRandGauss.hpp"
+#include "BlockRandUniform.hpp"
+#include "BlockStats.hpp"
