@@ -141,7 +141,7 @@ set(config_module_list
 	lib/mathlib
 	lib/mathlib/math/filter
 	lib/runway_takeoff
-	lib/tailsitter_recovery
+	#lib/tailsitter_recovery
 	#lib/terrain_estimation
 	lib/version
 
@@ -149,8 +149,8 @@ set(config_module_list
 	# Platform
 	#
 	platforms/common
-	platforms/nuttx
-	platforms/nuttx/px4_layer
+	nuttx
+	nuttx/px4_layer
 
 	
 	# Tutorial code from
