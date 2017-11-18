@@ -119,7 +119,7 @@ set(config_module_list
 	lib/mathlib/math/filter
 	lib/rc
 	lib/runway_takeoff
-	lib/tailsitter_recovery
+	#lib/tailsitter_recovery
 	#lib/terrain_estimation
 	lib/version
 
