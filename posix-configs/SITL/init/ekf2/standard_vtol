@@ -73,7 +73,7 @@ commander start
 land_detector start vtol
 navigator start
 ekf2 start
-#tol_att_control start
+vtol_att_control start
 mc_pos_control start
 mc_att_control start
 fw_pos_control_l1 start

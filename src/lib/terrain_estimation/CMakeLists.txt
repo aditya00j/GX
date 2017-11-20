@@ -31,12 +31,12 @@
 #
 ############################################################################
 px4_add_module(
-	MODULE examples__uuv_example_app
-	MAIN uuv_example_app
-	STACK_MAIN 2000
+	MODULE lib__terrain_estimation
+	STACK_MAIN 1024
+	COMPILE_FLAGS
 	SRCS
-		uuv_example_app.cpp
+		terrain_estimator.cpp
 	DEPENDS
 		platforms__common
 	)
-# vim: set noet ft=cmake fenc=utf-8 ff=unix : 
+# vim: set noet ft=cmake fenc=utf-8 ff=unix :

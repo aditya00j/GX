@@ -63,8 +63,8 @@ commander start
 land_detector start ugv
 navigator start
 ekf2 start
-#gnd_pos_control start
-#gnd_att_control start
+gnd_pos_control start
+gnd_att_control start
 mixer load /dev/pwm_output0 ROMFS/sitl/mixers/rover_sitl.main.mix
 mavlink start -x -u 14556 -r 4000000
 mavlink start -x -u 14557 -r 4000000 -m onboard -o 14540

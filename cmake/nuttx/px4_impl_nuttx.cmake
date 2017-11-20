@@ -181,7 +181,7 @@ function(px4_os_add_flags)
 		${PX4_BINARY_DIR}/NuttX/nuttx/arch/arm/src/common
 		${PX4_BINARY_DIR}/NuttX/nuttx/include
 		${PX4_BINARY_DIR}/NuttX/nuttx/include/cxx
-		${PX4_SOURCE_DIR}/nuttx/NuttX/apps/include
+		${PX4_SOURCE_DIR}/platforms/nuttx/NuttX/apps/include
 		)
 
 	#set(added_exe_linker_flags)
