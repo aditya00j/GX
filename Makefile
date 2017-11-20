@@ -285,16 +285,16 @@ s3put_coverage: tests_coverage
 
 # Astyle
 # --------------------------------------------------------------------
-# .PHONY: check_format format
+.PHONY: check_format format
 
-# check_format:
-# 	$(call colorecho,"Checking formatting with astyle")
-# 	@$(SRC_DIR)/Tools/astyle/check_code_style_all.sh
-# 	@cd $(SRC_DIR) && git diff --check
+check_format:
+	$(call colorecho,"Checking formatting with astyle")
+	@$(SRC_DIR)/Tools/astyle/check_code_style_all.sh
+	@cd $(SRC_DIR) && git diff --check
 
-# format:
-# 	$(call colorecho,"Formatting with astyle")
-# 	@$(SRC_DIR)/Tools/astyle/check_code_style_all.sh --fix
+format:
+	$(call colorecho,"Formatting with astyle")
+	@$(SRC_DIR)/Tools/astyle/check_code_style_all.sh --fix
 
 # Testing
 # --------------------------------------------------------------------
