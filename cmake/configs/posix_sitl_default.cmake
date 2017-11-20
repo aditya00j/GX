@@ -142,6 +142,8 @@ set(config_module_list
 	# Tutorial code from
 	# https://px4.io/dev/debug_values
 	examples/px4_mavlink_debug
+
+	
 )
 
 # Default config_sitl_rcS_dir (posix_sitl_default), this is overwritten later

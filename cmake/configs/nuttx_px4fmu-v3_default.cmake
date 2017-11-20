@@ -165,7 +165,7 @@ set(config_module_list
 	# https://px4.io/dev/debug_values
 	examples/px4_mavlink_debug
 
-
+	
 	# Hardware test
 	examples/hwtest
 )
