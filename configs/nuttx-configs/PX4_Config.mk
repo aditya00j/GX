@@ -1,5 +1,5 @@
 ############################################################################
-# nuttx-configs/PX4_Config.mk
+# configs/nuttx-configs/PX4_Config.mk
 #
 # Copyright (c) 2016 PX4 Development Team. All rights reserved.
 #

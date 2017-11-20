@@ -62,7 +62,7 @@ cmake-build-*/
 
 .vscode
 
-posix-configs/SITL/init/test/*_generated
+configs/posix-configs/SITL/init/test/*_generated
 
 /airframes.md
 /airframes.xml

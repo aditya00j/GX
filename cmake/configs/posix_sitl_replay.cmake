@@ -36,7 +36,7 @@ set(config_extra_builtin_cmds
 	)
 
 set(config_sitl_rcS_dir
-	posix-configs/SITL/init/replay
+	configs/posix-configs/SITL/init/replay
 	CACHE INTERNAL "init script dir for sitl"
 	)
 

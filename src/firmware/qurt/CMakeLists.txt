@@ -52,7 +52,7 @@ else()
 			 BOARD ${BOARD}
 			 FILES ${CMAKE_CURRENT_BINARY_DIR}/libpx4.so
 				 ${CMAKE_CURRENT_BINARY_DIR}/libpx4muorb_skel.so
-				 ${PX4_SOURCE_DIR}/posix-configs/eagle/flight/px4.config
+				 ${PX4_SOURCE_DIR}/configs/posix-configs/eagle/flight/px4.config
 			 DEPENDS px4 px4muorb_skel
 			 DEST /usr/share/data/adsp)
 endif()

@@ -7,7 +7,7 @@ if [ $# -eq 0 ]
     echo "Usage: $0 <path to defconfig>"
     exit 1
 fi
-configsdir=nuttx-configs
+configsdir=configs/nuttx-configs
 defconf=$1
 configsrc=$configsdir${defconf##*$configsdir}
 
