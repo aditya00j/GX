@@ -31,9 +31,6 @@
 [submodule "src/lib/micro-CDR"]
 	path = src/modules/micrortps_bridge/micro-CDR
 	url = https://github.com/eProsima/micro-CDR.git
-[submodule "nuttx/NuttX/apps"]
-	path = nuttx/NuttX/apps
-	url =  https://github.com/PX4-NuttX/apps.git
 [submodule "cmake/configs/uavcan_board_ident"]
 	path = cmake/configs/uavcan_board_ident
 	url = https://github.com/PX4/uavcan_board_ident.git
