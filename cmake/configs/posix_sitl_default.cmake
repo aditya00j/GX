@@ -151,8 +151,8 @@ set(config_module_list
 # which are based on posix_sitl_default.
 set(config_sitl_rcS_dir configs/posix-configs/SITL/init/ekf2 CACHE INTERNAL "init script dir for sitl")
 
-set(config_sitl_viewer jmavsim CACHE STRING "viewer for sitl")
-set_property(CACHE config_sitl_viewer PROPERTY STRINGS "jmavsim;none")
+#set(config_sitl_viewer jmavsim CACHE STRING "viewer for sitl")
+#set_property(CACHE config_sitl_viewer PROPERTY STRINGS "jmavsim;none")
 
 set(config_sitl_debugger disable CACHE STRING "debugger for sitl")
 set_property(CACHE config_sitl_debugger PROPERTY STRINGS "disable;gdb;lldb")
