@@ -54,8 +54,6 @@ MavlinkParametersManager::MavlinkParametersManager(Mavlink *mavlink) :
 	_uavcan_open_request_list(nullptr),
 	_uavcan_waiting_for_request_response(false),
 	_uavcan_queued_request_items(0),
-	_rc_param_map_pub(nullptr),
-	_rc_param_map(),
 	_uavcan_parameter_request_pub(nullptr),
 	_uavcan_parameter_value_sub(-1),
 	_mavlink(mavlink)
@@ -82,6 +80,7 @@ void
 MavlinkParametersManager::handle_message(const mavlink_message_t *msg)
 {
 	switch (msg->msgid) {
+		
 	case MAVLINK_MSG_ID_PARAM_REQUEST_LIST: {
 			/* request all parameters */
 			mavlink_param_request_list_t req_list;
@@ -259,48 +258,6 @@ MavlinkParametersManager::handle_message(const mavlink_message_t *msg)
 				// Enque the request and forward the first to the uavcan node
 				enque_uavcan_request(&req);
 				request_next_uavcan_parameter();
-			}
-
-			break;
-		}
-
-	case MAVLINK_MSG_ID_PARAM_MAP_RC: {
-			/* map a rc channel to a parameter */
-			mavlink_param_map_rc_t map_rc;
-			mavlink_msg_param_map_rc_decode(msg, &map_rc);
-
-			if (map_rc.target_system == mavlink_system.sysid &&
-			    (map_rc.target_component == mavlink_system.compid ||
-			     map_rc.target_component == MAV_COMP_ID_ALL)) {
-
-				/* Copy values from msg to uorb using the parameter_rc_channel_index as index */
-				size_t i = map_rc.parameter_rc_channel_index;
-				_rc_param_map.param_index[i] = map_rc.param_index;
-				strncpy(&(_rc_param_map.param_id[i * (rc_parameter_map_s::PARAM_ID_LEN + 1)]), map_rc.param_id,
-					MAVLINK_MSG_PARAM_VALUE_FIELD_PARAM_ID_LEN);
-				/* enforce null termination */
-				_rc_param_map.param_id[i * (rc_parameter_map_s::PARAM_ID_LEN + 1) + rc_parameter_map_s::PARAM_ID_LEN] = '\0';
-				_rc_param_map.scale[i] = map_rc.scale;
-				_rc_param_map.value0[i] = map_rc.param_value0;
-				_rc_param_map.value_min[i] = map_rc.param_value_min;
-				_rc_param_map.value_max[i] = map_rc.param_value_max;
-
-				if (map_rc.param_index == -2) { // -2 means unset map
-					_rc_param_map.valid[i] = false;
-
-				} else {
-					_rc_param_map.valid[i] = true;
-				}
-
-				_rc_param_map.timestamp = hrt_absolute_time();
-
-				if (_rc_param_map_pub == nullptr) {
-					_rc_param_map_pub = orb_advertise(ORB_ID(rc_parameter_map), &_rc_param_map);
-
-				} else {
-					orb_publish(ORB_ID(rc_parameter_map), _rc_param_map_pub, &_rc_param_map);
-				}
-
 			}
 
 			break;

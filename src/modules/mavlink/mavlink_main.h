@@ -57,9 +57,10 @@
 #include <drivers/device/ringbuffer.h>
 
 #include <uORB/uORB.h>
-#include <uORB/topics/mission.h>
-#include <uORB/topics/mission_result.h>
 #include <uORB/topics/telemetry_status.h>
+#include <uORB/topics/parameter_update.h>
+#include <uORB/topics/vehicle_command_ack.h>
+#include <uORB/topics/mavlink_log.h>
 
 #include "mavlink_bridge_header.h"
 #include "mavlink_orb_subscription.h"

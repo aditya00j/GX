@@ -45,7 +45,6 @@
 
 #include "mavlink_bridge_header.h"
 #include <uORB/uORB.h>
-#include <uORB/topics/rc_parameter_map.h>
 #include <uORB/topics/uavcan_parameter_request.h>
 #include <drivers/drv_hrt.h>
 
@@ -97,9 +96,6 @@ protected:
 	_uavcan_open_request_list_item *_uavcan_open_request_list; // Pointer to the first item in the linked list
 	bool _uavcan_waiting_for_request_response; // We have reqested a parameter and wait for the response
 	uint16_t _uavcan_queued_request_items;	// Number of stored parameter requests currently in the list
-
-	orb_advert_t _rc_param_map_pub;
-	struct rc_parameter_map_s _rc_param_map;
 
 	orb_advert_t _uavcan_parameter_request_pub;
 	int _uavcan_parameter_value_sub;

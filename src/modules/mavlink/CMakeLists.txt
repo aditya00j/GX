@@ -42,7 +42,6 @@ px4_add_module(
 	SRCS
 		mavlink.c
 		mavlink_main.cpp
-		mavlink_mission.cpp
 		mavlink_parameters.cpp
 		mavlink_orb_subscription.cpp
 		mavlink_messages.cpp
