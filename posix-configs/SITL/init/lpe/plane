@@ -62,7 +62,7 @@ pwm_out_sim mode_pwm
 sensors start
 commander start
 navigator start
-local_position_estimator start
+#local_position_estimator start
 fw_pos_control_l1 start
 fw_att_control start
 land_detector start fixedwing

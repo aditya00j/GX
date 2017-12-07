@@ -38,7 +38,7 @@ set(msg_file_names
 	actuator_outputs.msg
 	adc_report.msg
 	airspeed.msg
-	att_pos_mocap.msg
+	#att_pos_mocap.msg
 	battery_status.msg
 	camera_trigger.msg
 	camera_capture.msg
@@ -50,7 +50,7 @@ set(msg_file_names
 	differential_pressure.msg
 	distance_sensor.msg
 	ekf2_innovations.msg
-	ekf2_replay.msg
+	#ekf2_replay.msg
 	ekf2_timestamps.msg
 	esc_report.msg
 	esc_status.msg
