@@ -110,10 +110,10 @@ set(config_module_list
 	#
 	# Estimation modules
 	#
-	modules/attitude_estimator_q
+	#modules/attitude_estimator_q
 	modules/ekf2
 	modules/local_position_estimator
-	modules/position_estimator_inav
+	#modules/position_estimator_inav
 
 	#
 	# Vehicle Control
