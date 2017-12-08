@@ -80,7 +80,7 @@
 #include <systemlib/mavlink_log.h>
 #include <systemlib/err.h>
 #include <systemlib/airspeed.h>
-#include <commander/px4_custom_mode.h>
+//#include <commander/px4_custom_mode.h>
 #include <geo/geo.h>
 
 #include "mavlink_bridge_header.h"

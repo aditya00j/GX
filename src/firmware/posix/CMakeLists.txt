@@ -103,10 +103,10 @@ elseif ("${BOARD}" STREQUAL "bebop")
 				DEPENDS ${APP_NAME}.stripped
 				DEST /usr/bin)
 
-elseif ("${BOARD}" STREQUAL "sitl")
+#elseif ("${BOARD}" STREQUAL "sitl")
 
-	include(./sitl_target.cmake)
-	include(./sitl_tests.cmake)
+	#include(./sitl_target.cmake)
+	#include(./sitl_tests.cmake)
 
 else()
 

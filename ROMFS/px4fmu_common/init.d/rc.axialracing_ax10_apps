@@ -4,7 +4,7 @@
 # att & pos estimator, rover steering control
 #
 
-ekf2 start
+#ekf2 start
 
 # disabled the start of steering control app due to use of offboard mode only
 # rover_steering_control start

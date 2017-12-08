@@ -14,7 +14,7 @@ exec find src \
     -path src/lib/DriverFramework -prune -o \
     -path src/lib/ecl -prune -o \
     -path src/lib/matrix -prune -o \
-    -path src/modules/commander -prune -o \
+    #-path src/modules/commander -prune -o \
     #-path src/modules/sdlog2 -prune -o \
     -path src/modules/systemlib/uthash -prune -o \
     -path src/modules/uavcan -prune -o \

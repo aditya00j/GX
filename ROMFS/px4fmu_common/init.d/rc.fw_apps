@@ -14,7 +14,7 @@ fi
 #
 # Start the attitude and position estimator
 #
-ekf2 start
+#ekf2 start
 
 #
 # Start attitude controller

@@ -47,7 +47,7 @@ set(config_module_list
 	drivers/sf0x/sf0x_tests
 	#drivers/test_ppm
 	lib/rc/rc_tests
-	modules/commander/commander_tests
+	#modules/commander/commander_tests
 	lib/controllib/controllib_test
 	modules/mavlink/mavlink_tests
 	modules/mc_pos_control/mc_pos_control_tests
@@ -58,14 +58,14 @@ set(config_module_list
 	#
 	# General system control
 	#
-	modules/commander
+	#modules/commander
 	modules/events
 	#modules/gpio_led
 	modules/land_detector
 	modules/load_mon
 	modules/mavlink
 	modules/navigator
-	modules/replay
+	#modules/replay
 	modules/simulator
 	#modules/uavcan
 
@@ -73,7 +73,7 @@ set(config_module_list
 	# Estimation modules
 	#
 	#modules/attitude_estimator_q
-	modules/ekf2
+	#modules/ekf2
 	#modules/ekf2_replay
 	#modules/local_position_estimator
 	#modules/position_estimator_inav
@@ -92,7 +92,7 @@ set(config_module_list
 	#
 	# Logging
 	#
-	modules/logger
+	#modules/logger
 	#modules/sdlog2
 
 	#
@@ -134,17 +134,17 @@ set(config_module_list
 	#
 	# OBC challenge
 	#
-	modules/bottle_drop
+	#modules/bottle_drop
 
 	#
 	# Rover apps
 	#
-	examples/rover_steering_control
+	#examples/rover_steering_control
 
 	#
 	# Segway
 	#
-	examples/segway
+	#examples/segway
 
 	#
 	# Demo apps
@@ -160,17 +160,17 @@ set(config_module_list
 
 	# Tutorial code from
 	# https://px4.io/dev/debug_values
-	examples/px4_mavlink_debug
+	#examples/px4_mavlink_debug
 
 	# Tutorial code from
 	# https://px4.io/dev/example_fixedwing_control
-	examples/fixedwing_control
+	#examples/fixedwing_control
 
 	# Hardware test
 	#examples/hwtest
 
 	# EKF
-	examples/ekf_att_pos_estimator
+	#examples/ekf_att_pos_estimator
 )
 
 set(config_extra_builtin_cmds
@@ -202,9 +202,9 @@ set_property(CACHE config_sitl_debugger
 
 # If the environment variable 'replay' is defined, we are building with replay
 # support. In this case, we enable the orb publisher rules.
-set(REPLAY_FILE "$ENV{replay}")
-if(REPLAY_FILE)
-	message("Building with uorb publisher rules support")
-	add_definitions(-DORB_USE_PUBLISHER_RULES)
-endif()
+#set(REPLAY_FILE "$ENV{replay}")
+#if(REPLAY_FILE)
+#	message("Building with uorb publisher rules support")
+#	add_definitions(-DORB_USE_PUBLISHER_RULES)
+#endif()
 

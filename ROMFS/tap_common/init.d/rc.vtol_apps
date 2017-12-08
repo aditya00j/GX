@@ -9,7 +9,7 @@
 #---------------------------------------
 # Estimator group selction
 #
-ekf2 start
+#ekf2 start
 
 vtol_att_control start
 mc_att_control start

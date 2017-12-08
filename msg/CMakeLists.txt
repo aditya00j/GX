@@ -42,16 +42,16 @@ set(msg_file_names
 	battery_status.msg
 	camera_trigger.msg
 	camera_capture.msg
-	collision_report.msg
-	commander_state.msg
+	#collision_report.msg
+	#commander_state.msg
 	control_state.msg
 	cpuload.msg
 	debug_key_value.msg
 	differential_pressure.msg
 	distance_sensor.msg
-	ekf2_innovations.msg
+	#ekf2_innovations.msg
 	#ekf2_replay.msg
-	ekf2_timestamps.msg
+	#ekf2_timestamps.msg
 	esc_report.msg
 	esc_status.msg
 	estimator_status.msg

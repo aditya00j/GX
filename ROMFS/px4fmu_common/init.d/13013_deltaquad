@@ -100,9 +100,9 @@ then
 	param set CBRK_AIRSPD_CHK 162128
 	param set CBRK_IO_SAFETY 22027
 
-	param set EKF2_GPS_POS_X -0.12
-	param set EKF2_IMU_POS_X -0.12
-	param set EKF2_TAU_VEL 0.5
+	#param set EKF2_GPS_POS_X -0.12
+	#param set EKF2_IMU_POS_X -0.12
+	#param set EKF2_TAU_VEL 0.5
 
 	param set SYS_COMPANION 57600
 fi

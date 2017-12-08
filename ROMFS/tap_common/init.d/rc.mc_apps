@@ -5,7 +5,7 @@
 #
 
 
-ekf2 start
+#ekf2 start
 
 mc_att_control start
 

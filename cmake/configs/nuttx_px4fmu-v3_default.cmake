@@ -86,7 +86,7 @@ set(config_module_list
 	drivers/sf0x/sf0x_tests
 	drivers/test_ppm
 	#lib/rc/rc_tests
-	modules/commander/commander_tests
+	#modules/commander/commander_tests
 	lib/controllib/controllib_test
 	modules/mavlink/mavlink_tests
 	modules/mc_pos_control/mc_pos_control_tests
@@ -97,7 +97,7 @@ set(config_module_list
 	#
 	# General system control
 	#
-	modules/commander
+	#modules/commander
 	modules/events
 	modules/gpio_led
 	modules/land_detector
@@ -111,7 +111,7 @@ set(config_module_list
 	# Estimation modules
 	#
 	#modules/attitude_estimator_q
-	modules/ekf2
+	#modules/ekf2
 	#modules/local_position_estimator
 	#modules/position_estimator_inav
 
@@ -129,7 +129,7 @@ set(config_module_list
 	#
 	# Logging
 	#
-	modules/logger
+	#modules/logger
 	#modules/sdlog2
 
 	#
@@ -170,17 +170,17 @@ set(config_module_list
 	#
 	# OBC challenge
 	#
-	modules/bottle_drop
+	#modules/bottle_drop
 
 	#
 	# Rover apps
 	#
-	examples/rover_steering_control
+	#examples/rover_steering_control
 
 	#
 	# Segway
 	#
-	examples/segway
+	#examples/segway
 
 	#
 	# Demo apps
@@ -200,13 +200,13 @@ set(config_module_list
 
 	# Tutorial code from
 	# https://px4.io/dev/example_fixedwing_control
-	examples/fixedwing_control
+	#examples/fixedwing_control
 
 	# Hardware test
 	examples/hwtest
 
 	# EKF
-	examples/ekf_att_pos_estimator
+	#examples/ekf_att_pos_estimator
 )
 
 set(config_extra_builtin_cmds

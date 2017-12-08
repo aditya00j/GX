@@ -58,13 +58,13 @@ then
 	param set MPC_Z_VEL_MAX_UP 5.0000
 	param set MPC_Z_VEL_P 0.8000
 
-	param set EKF2_GPS_POS_X -0.0600
-	param set EKF2_GPS_POS_Z -0.1000
-	param set EKF2_MIN_OBS_DT 50
+	#param set EKF2_GPS_POS_X -0.0600
+	#param set EKF2_GPS_POS_Z -0.1000
+	#param set EKF2_MIN_OBS_DT 50
 
-	param set EKF2_BARO_GATE 10.0
-	param set EKF2_BARO_NOISE 5.0
-	param set EKF2_ACC_NOISE 0.7
+	#param set EKF2_BARO_GATE 10.0
+	#param set EKF2_BARO_NOISE 5.0
+	#param set EKF2_ACC_NOISE 0.7
 
 	param set SYS_LOGGER 1
 fi
