@@ -46,7 +46,7 @@
 #include "mavlink_messages.h"
 #include "mavlink_command_sender.h"
 
-#include <commander/px4_custom_mode.h>
+//#include <commander/px4_custom_mode.h>
 #include <drivers/drv_pwm_output.h>
 #include <drivers/drv_rc_input.h>
 #include <lib/geo/geo.h>
