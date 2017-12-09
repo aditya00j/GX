@@ -67,7 +67,7 @@
 #include <uORB/topics/vehicle_rates_setpoint.h>
 #include <uORB/topics/vehicle_status.h>
 #include <uORB/uORB.h>
-#include <vtol_att_control/vtol_type.h>
+//#include <vtol_att_control/vtol_type.h>
 
 using matrix::Eulerf;
 using matrix::Quatf;
@@ -271,7 +271,7 @@ private:
 
 		param_t rattitude_thres;
 
-		param_t vtol_type;
+		//param_t vtol_type;
 
 		param_t bat_scale_en;
 
@@ -467,7 +467,7 @@ FixedwingAttitudeControl::FixedwingAttitudeControl() :
 
 	_parameter_handles.rattitude_thres = param_find("FW_RATT_TH");
 
-	_parameter_handles.vtol_type = param_find("VT_TYPE");
+	//_parameter_handles.vtol_type = param_find("VT_TYPE");
 
 	_parameter_handles.bat_scale_en = param_find("FW_BAT_SCALE_EN");
 
@@ -574,7 +574,7 @@ FixedwingAttitudeControl::parameters_update()
 
 	param_get(_parameter_handles.rattitude_thres, &_parameters.rattitude_thres);
 
-	param_get(_parameter_handles.vtol_type, &_parameters.vtol_type);
+	//param_get(_parameter_handles.vtol_type, &_parameters.vtol_type);
 
 	param_get(_parameter_handles.bat_scale_en, &_parameters.bat_scale_en);
 
@@ -814,7 +814,7 @@ FixedwingAttitudeControl::task_main()
 			_pitch   = euler_angles(1);
 			_yaw     = euler_angles(2);
 
-			if (_vehicle_status.is_vtol && _parameters.vtol_type == vtol_type::TAILSITTER) {
+			//if (_vehicle_status.is_vtol && _parameters.vtol_type == vtol_type::TAILSITTER) {
 				/* vehicle is a tailsitter, we need to modify the estimated attitude for fw mode
 				 *
 				 * Since the VTOL airframe is initialized as a multicopter we need to
@@ -831,35 +831,35 @@ FixedwingAttitudeControl::task_main()
 				 * Rxy	Ryy  Rzy		-Rzy  Ryy  Rxy
 				 * Rxz	Ryz  Rzz		-Rzz  Ryz  Rxz
 				 * */
-				math::Matrix<3, 3> R_adapted = _R;		//modified rotation matrix
+				//math::Matrix<3, 3> R_adapted = _R;		//modified rotation matrix
 
 				/* move z to x */
-				R_adapted(0, 0) = _R(0, 2);
-				R_adapted(1, 0) = _R(1, 2);
-				R_adapted(2, 0) = _R(2, 2);
+			//	R_adapted(0, 0) = _R(0, 2);
+			//	R_adapted(1, 0) = _R(1, 2);
+			//	R_adapted(2, 0) = _R(2, 2);
 
 				/* move x to z */
-				R_adapted(0, 2) = _R(0, 0);
-				R_adapted(1, 2) = _R(1, 0);
-				R_adapted(2, 2) = _R(2, 0);
+			//	R_adapted(0, 2) = _R(0, 0);
+			//	R_adapted(1, 2) = _R(1, 0);
+			//	R_adapted(2, 2) = _R(2, 0);
 
 				/* change direction of pitch (convert to right handed system) */
-				R_adapted(0, 0) = -R_adapted(0, 0);
-				R_adapted(1, 0) = -R_adapted(1, 0);
-				R_adapted(2, 0) = -R_adapted(2, 0);
-				euler_angles = R_adapted.to_euler();  //adapted euler angles for fixed wing operation
+			//	R_adapted(0, 0) = -R_adapted(0, 0);
+			//	R_adapted(1, 0) = -R_adapted(1, 0);
+			//	R_adapted(2, 0) = -R_adapted(2, 0);
+			//	euler_angles = R_adapted.to_euler();  //adapted euler angles for fixed wing operation
 
 				/* fill in new attitude data */
-				_R = R_adapted;
-				_roll    = euler_angles(0);
-				_pitch   = euler_angles(1);
-				_yaw     = euler_angles(2);
+			//	_R = R_adapted;
+			//	_roll    = euler_angles(0);
+			//	_pitch   = euler_angles(1);
+			//	_yaw     = euler_angles(2);
 
-				/* lastly, roll- and yawspeed have to be swaped */
-				float helper = _ctrl_state.roll_rate;
-				_ctrl_state.roll_rate = -_ctrl_state.yaw_rate;
-				_ctrl_state.yaw_rate = helper;
-			}
+			//	/* lastly, roll- and yawspeed have to be swaped */
+			//	float helper = _ctrl_state.roll_rate;
+			//	_ctrl_state.roll_rate = -_ctrl_state.yaw_rate;
+				//_ctrl_state.yaw_rate = helper;
+			//}
 
 			vehicle_setpoint_poll();
 
@@ -893,9 +893,9 @@ FixedwingAttitudeControl::task_main()
 			}
 
 			/* if we are in rotary wing mode, do nothing */
-			if (_vehicle_status.is_rotary_wing && !_vehicle_status.is_vtol) {
-				continue;
-			}
+			//if (_vehicle_status.is_rotary_wing && !_vehicle_status.is_vtol) {
+			//	continue;
+			//}
 
 			/* default flaps to center */
 			float flap_control = 0.0f;

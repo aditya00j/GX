@@ -85,7 +85,7 @@
 #include <uORB/topics/vehicle_land_detected.h>
 #include <uORB/topics/vehicle_status.h>
 #include <uORB/uORB.h>
-#include <vtol_att_control/vtol_type.h>
+//#include <vtol_att_control/vtol_type.h>
 
 #define HDG_HOLD_DIST_NEXT 		3000.0f 	// initial distance of waypoint in front of plane in heading hold mode
 #define HDG_HOLD_REACHED_DIST 		1000.0f 	// distance (plane to waypoint in front) at which waypoints are reset in heading hold mode
@@ -356,7 +356,7 @@ private:
 		param_t land_use_terrain_estimate;
 		param_t land_airspeed_scale;
 
-		param_t vtol_type;
+		//param_t vtol_type;
 	} _parameter_handles {};				///< handles for interesting parameters */
 
 

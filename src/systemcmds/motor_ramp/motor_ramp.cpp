@@ -118,8 +118,8 @@ usage(const char *reason)
 		 "<mode> can be one of (ramp|sine|square)\n\n"
 		 "Example:\n"
 		 //"sdlog2 on\n"
-		 "mc_att_control stop\n"
-		 "fw_att_control stop\n"
+		 //"mc_att_control stop\n"
+		 //"fw_att_control stop\n"
 		 "motor_ramp sine 1100 0.5\n");
 }
 

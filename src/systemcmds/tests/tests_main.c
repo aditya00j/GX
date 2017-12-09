@@ -91,7 +91,7 @@ const struct {
 #endif /* __PX4_NUTTX */
 
 	/* external tests */
-	{"commander",		commander_tests_main,	0},
+	//{"commander",		commander_tests_main,	0},
 	{"controllib",		controllib_test_main,	0},
 	{"mavlink",		mavlink_tests_main,	0},
 	{"mc_pos_control",	mc_pos_control_tests_main,	0},
