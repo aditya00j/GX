@@ -50,7 +50,7 @@ set(config_module_list
 	#modules/commander/commander_tests
 	lib/controllib/controllib_test
 	modules/mavlink/mavlink_tests
-	modules/mc_pos_control/mc_pos_control_tests
+	#modules/mc_pos_control/mc_pos_control_tests
 	modules/unit_test
 	modules/uORB/uORB_tests
 	systemcmds/tests
@@ -66,7 +66,7 @@ set(config_module_list
 	modules/mavlink
 	#modules/navigator
 	#modules/replay
-	modules/simulator
+	#modules/simulator
 	#modules/uavcan
 
 	#
@@ -83,10 +83,10 @@ set(config_module_list
 	#
 	#modules/fw_att_control
 	#modules/fw_pos_control_l1
-	modules/gnd_att_control
-	modules/gnd_pos_control
+	#modules/gnd_att_control
+	#modules/gnd_pos_control
 	#modules/mc_att_control
-	modules/mc_pos_control
+	#modules/mc_pos_control
 	#modules/vtol_att_control
 
 	#

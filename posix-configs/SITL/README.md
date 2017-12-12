@@ -78,7 +78,7 @@ adcsim start
 commander start
 sensors start
 ekf_att_pos_estimator start
-mc_pos_control start
+#mc_pos_control start
 #mc_att_control start
 hil mode_pwm
 param set MAV_TYPE 2

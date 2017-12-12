@@ -19,7 +19,7 @@ set(tests
 	mathlib
 	matrix
 	mavlink
-	mc_pos_control
+	#mc_pos_control
 	mixer
 	param
 	parameters
