@@ -4,7 +4,7 @@ set(CMAKE_TOOLCHAIN_FILE ${PX4_SOURCE_DIR}/cmake/toolchains/Toolchain-native.cma
 
 set(config_module_list
 	drivers/boards/sitl
-	drivers/camera_trigger
+	#drivers/camera_trigger
 	drivers/device
 	drivers/gps
 	drivers/pwm_out_sim
@@ -64,7 +64,7 @@ set(config_module_list
 	#modules/land_detector
 	modules/load_mon
 	modules/mavlink
-	modules/navigator
+	#modules/navigator
 	#modules/replay
 	modules/simulator
 	#modules/uavcan
@@ -82,7 +82,7 @@ set(config_module_list
 	# Vehicle Control
 	#
 	#modules/fw_att_control
-	modules/fw_pos_control_l1
+	#modules/fw_pos_control_l1
 	modules/gnd_att_control
 	modules/gnd_pos_control
 	#modules/mc_att_control

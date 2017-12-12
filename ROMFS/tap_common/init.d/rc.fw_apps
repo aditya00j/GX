@@ -12,7 +12,7 @@
 # Start attitude controller
 #
 #fw_att_control start
-fw_pos_control_l1 start
+#fw_pos_control_l1 start
 
 #
 # Start Land Detector

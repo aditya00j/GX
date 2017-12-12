@@ -16,7 +16,7 @@ set(config_module_list
 	drivers/bmp280
 	drivers/boards/px4fmu-v2
 	drivers/bst
-	drivers/camera_trigger
+	#drivers/camera_trigger
 	drivers/device
 	drivers/ets_airspeed
 	drivers/frsky_telemetry
@@ -103,7 +103,7 @@ set(config_module_list
 	#modules/land_detector
 	modules/load_mon
 	modules/mavlink
-	modules/navigator
+	#modules/navigator
 	modules/uavcan
 	modules/camera_feedback
 
@@ -119,7 +119,7 @@ set(config_module_list
 	# Vehicle Control
 	#
 	#modules/fw_att_control
-	modules/fw_pos_control_l1
+	#modules/fw_pos_control_l1
 	modules/gnd_att_control
 	modules/gnd_pos_control
 	#modules/mc_att_control
