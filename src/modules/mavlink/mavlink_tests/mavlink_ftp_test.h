@@ -36,11 +36,11 @@
 
 #pragma once
 
-#include <unit_test/unit_test.h>
+//#include <unit_test/unit_test.h>
 #include "../mavlink_bridge_header.h"
 #include "../mavlink_ftp.h"
 
-class MavlinkFtpTest : public UnitTest
+/***class MavlinkFtpTest : public UnitTest
 {
 public:
 	MavlinkFtpTest();
@@ -127,8 +127,8 @@ private:
 
 	mavlink_file_transfer_protocol_t _reply_msg;
 
-	static const char _unittest_microsd_dir[];
-	static const char _unittest_microsd_file[];
-};
+	//static const char _unittest_microsd_dir[];
+	//static const char _unittest_microsd_file[];
+}; ***/
 
 bool mavlink_ftp_test(void);

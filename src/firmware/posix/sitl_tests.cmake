@@ -9,7 +9,7 @@ set(tests
 	commander
 	controllib
 	conv
-	dataman
+	#dataman
 	file2
 	float
 	gpio

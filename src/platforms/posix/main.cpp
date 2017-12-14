@@ -439,11 +439,11 @@ int main(int argc, char **argv)
 		touch(eeprom_path + "parameters");
 	}
 
-	if (!fileExists(microsd_path + "dataman")) {
-		cout << "creating new dataman file" << endl;
-		mkpath(microsd_path.c_str(), S_IRUSR | S_IWUSR | S_IXUSR);
-		touch(microsd_path + "dataman");
-	}
+	//if (!fileExists(microsd_path + "dataman")) {
+	//	cout << "creating new dataman file" << endl;
+	//	mkpath(microsd_path.c_str(), S_IRUSR | S_IWUSR | S_IXUSR);
+	//	touch(microsd_path + "dataman");
+	//}
 
 	// initialize
 	DriverFramework::Framework::initialize();

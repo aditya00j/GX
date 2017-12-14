@@ -428,21 +428,21 @@ then
 		gps start
 	fi
 
-	set DATAMAN_OPT ""
-	if ver hwcmp AEROFC_V1
-	then
-		set DATAMAN_OPT -i
-	fi
-	if ver hwcmp AEROCORE2
-	then
-		set DATAMAN_OPT "-f /fs/mtd_dataman"
-	fi
+	#set DATAMAN_OPT ""
+	#if ver hwcmp AEROFC_V1
+	#then
+	#	set DATAMAN_OPT -i
+	#fi
+	#if ver hwcmp AEROCORE2
+	#then
+	#	set DATAMAN_OPT "-f /fs/mtd_dataman"
+	#fi
 	# waypoint storage
 	# REBOOTWORK this needs to start in parallel
-	if dataman start $DATAMAN_OPT
-	then
-	fi
-	unset DATAMAN_OPT
+	#if dataman start $DATAMAN_OPT
+	#then
+	#fi
+	#unset DATAMAN_OPT
 
 	#
 	# Sensors System (start before Commander so Preflight checks are properly run)
@@ -1026,14 +1026,14 @@ then
 		if ver hwcmp PX4FMU_V2
 		then
 			# On Pixfalcon use the standard telemetry port (Telem 1).
-			snapdragon_rc_pwm start -d /dev/ttyS1
+			#snapdragon_rc_pwm start -d /dev/ttyS1
 			px4io start
 		fi
 
 		if ver hwcmp PX4FMU_V4
 		then
 			# On Pixracer use Telem 2 port (TL2).
-			snapdragon_rc_pwm start -d /dev/ttyS2
+			#snapdragon_rc_pwm start -d /dev/ttyS2
 			fmu mode_pwm4
 		fi
 

@@ -48,7 +48,7 @@ set(config_module_list
 	drivers/sdp3x_airspeed
 	drivers/sf0x
 	drivers/sf1xx
-	drivers/snapdragon_rc_pwm
+	#drivers/snapdragon_rc_pwm
 	drivers/srf02
 	drivers/stm32
 	drivers/stm32/adc
@@ -68,14 +68,14 @@ set(config_module_list
 	systemcmds/hardfault_log
 	systemcmds/led_control
 	systemcmds/mixer
-	systemcmds/motor_ramp
+	#systemcmds/motor_ramp
 	systemcmds/mtd
 	systemcmds/nshterm
 	systemcmds/param
 	systemcmds/perf
 	systemcmds/pwm
 	systemcmds/reboot
-	systemcmds/sd_bench
+	#systemcmds/sd_bench
 	systemcmds/top
 	systemcmds/topic_listener
 	systemcmds/ver
@@ -85,14 +85,14 @@ set(config_module_list
 	#
 	drivers/sf0x/sf0x_tests
 	drivers/test_ppm
-	#lib/rc/rc_tests
+	lib/rc/rc_tests
 	#modules/commander/commander_tests
 	lib/controllib/controllib_test
 	modules/mavlink/mavlink_tests
 	#modules/mc_pos_control/mc_pos_control_tests
-	modules/unit_test
+	#modules/unit_test
 	modules/uORB/uORB_tests
-	systemcmds/tests
+	#systemcmds/tests
 
 	#
 	# General system control
@@ -105,7 +105,7 @@ set(config_module_list
 	modules/mavlink
 	#modules/navigator
 	modules/uavcan
-	modules/camera_feedback
+	#modules/camera_feedback
 
 	#
 	# Estimation modules
@@ -135,7 +135,7 @@ set(config_module_list
 	#
 	# Library modules
 	#
-	modules/dataman
+	#modules/dataman
 	modules/systemlib/param
 	modules/systemlib
 	modules/systemlib/mixer
@@ -151,13 +151,13 @@ set(config_module_list
 	lib/external_lgpl
 	lib/geo
 	lib/geo_lookup
-	lib/launchdetection
+	#lib/launchdetection
 	lib/led
 	lib/mathlib
 	lib/mathlib/math/filter
-	lib/runway_takeoff
-	lib/tailsitter_recovery
-	lib/terrain_estimation
+	#lib/runway_takeoff
+	#lib/tailsitter_recovery
+	#lib/terrain_estimation
 	lib/version
 
 	#
@@ -192,18 +192,18 @@ set(config_module_list
 
 	# Tutorial code from
 	# https://px4.io/dev/daemon
-	examples/px4_daemon_app
+	#examples/px4_daemon_app
 
 	# Tutorial code from
 	# https://px4.io/dev/debug_values
-	examples/px4_mavlink_debug
+	#examples/px4_mavlink_debug
 
 	# Tutorial code from
 	# https://px4.io/dev/example_fixedwing_control
 	#examples/fixedwing_control
 
 	# Hardware test
-	examples/hwtest
+	#examples/hwtest
 
 	# EKF
 	#examples/ekf_att_pos_estimator

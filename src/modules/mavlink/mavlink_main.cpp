@@ -73,7 +73,7 @@
 #include <systemlib/systemlib.h>
 #include <systemlib/mavlink_log.h>
 #include <geo/geo.h>
-#include <dataman/dataman.h>
+//#include <dataman/dataman.h>
 #include <version/version.h>
 
 #include "mavlink_bridge_header.h"

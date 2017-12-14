@@ -29,14 +29,14 @@ set(config_module_list
 	systemcmds/esc_calib
 	systemcmds/led_control
 	systemcmds/mixer
-	systemcmds/motor_ramp
+	#systemcmds/motor_ramp
 	#systemcmds/mtd
 	#systemcmds/nshterm
 	systemcmds/param
 	systemcmds/perf
 	systemcmds/pwm
 	systemcmds/reboot
-	systemcmds/sd_bench
+	#systemcmds/sd_bench
 	systemcmds/top
 	systemcmds/topic_listener
 	systemcmds/ver
@@ -51,9 +51,9 @@ set(config_module_list
 	lib/controllib/controllib_test
 	modules/mavlink/mavlink_tests
 	#modules/mc_pos_control/mc_pos_control_tests
-	modules/unit_test
+	#modules/unit_test
 	modules/uORB/uORB_tests
-	systemcmds/tests
+	#systemcmds/tests
 
 	#
 	# General system control
@@ -66,7 +66,7 @@ set(config_module_list
 	modules/mavlink
 	#modules/navigator
 	#modules/replay
-	#modules/simulator
+	modules/simulator
 	#modules/uavcan
 
 	#
@@ -98,7 +98,7 @@ set(config_module_list
 	#
 	# Library modules
 	#
-	modules/dataman
+	#modules/dataman
 	modules/systemlib/param
 	modules/systemlib
 	modules/systemlib/mixer
@@ -114,14 +114,14 @@ set(config_module_list
 	lib/external_lgpl
 	lib/geo
 	lib/geo_lookup
-	lib/launchdetection
+	#lib/launchdetection
 	lib/led
 	lib/mathlib
 	lib/mathlib/math/filter
 	lib/rc
-	lib/runway_takeoff
-	lib/tailsitter_recovery
-	lib/terrain_estimation
+	#lib/runway_takeoff
+	#lib/tailsitter_recovery
+	#lib/terrain_estimation
 	lib/version
 
 	#
@@ -156,7 +156,7 @@ set(config_module_list
 
 	# Tutorial code from
 	# https://px4.io/dev/daemon
-	examples/px4_daemon_app
+	#examples/px4_daemon_app
 
 	# Tutorial code from
 	# https://px4.io/dev/debug_values

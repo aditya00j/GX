@@ -30,23 +30,21 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 ############################################################################
-
-include_directories(${PX4_SOURCE_DIR}/mavlink/include/mavlink)
-
 px4_add_module(
-	MODULE modules__mavlink__mavlink_tests
-	MAIN mavlink_tests
-	STACK_MAIN 5000
+	MODULE drivers__boards__px4fmu-v2
 	COMPILE_FLAGS
-		#-DMAVLINK_FTP_UNIT_TEST
-		-DMavlinkStream=MavlinkStreamTest
-		-DMavlinkFTP=MavlinkFTPTest
 	SRCS
-		mavlink_tests.cpp
-		mavlink_ftp_test.cpp
-		../mavlink_stream.cpp
-		../mavlink_ftp.cpp
-		../mavlink.c
+		../common/board_crashdump.c
+		../common/board_dma_alloc.c
+		../common/stm32/board_reset.c
+		../common/stm32/board_identity.c
+		../common/stm32/board_mcu_version.c
+		px4fmu_can.c
+		px4fmu2_init.c
+		px4fmu_timer_config.c
+		px4fmu_spi.c
+		px4fmu_usb.c
+		px4fmu2_led.c
 	DEPENDS
 		platforms__common
 	)
