@@ -87,5 +87,5 @@ bool SF0XTest::sf0xTest()
 	return true;
 }   ***/
 
-ut_declare_test_c(sf0x_tests_main)
+//ut_declare_test_c(sf0x_tests_main)
 

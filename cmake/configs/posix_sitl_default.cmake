@@ -8,7 +8,7 @@ set(config_module_list
 	drivers/device
 	drivers/gps
 	drivers/pwm_out_sim
-	drivers/vmount
+	#drivers/vmount
 	drivers/linux_gpio
 	modules/sensors
 	platforms/posix/drivers/accelsim
@@ -182,7 +182,7 @@ set(config_extra_builtin_cmds
 # for the config posix_sitl_efk2 and set again, explicitly, for posix_sitl_lpe,
 # which are based on posix_sitl_default.
 set(config_sitl_rcS_dir
-	posix-configs/SITL/init/ekf2
+	#posix-configs/SITL/init/ekf2
 	CACHE INTERNAL "init script dir for sitl"
 	)
 

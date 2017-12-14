@@ -99,9 +99,9 @@ private:
 			       uint8_t				size,
 			       const uint8_t			*data,
 			       const MavlinkFTP::PayloadHeader	**payload_reply);
-	void _cleanup_microsd(void);
+	void _cleanup_microsd(void); ***/
 
-	/// A single download test case
+	// A single download test case
 	struct DownloadTestCase {
 		const char	*file;
 		const uint16_t	length;
@@ -110,9 +110,9 @@ private:
 	};
 
 	/// The set of test cases for download testing
-	static const DownloadTestCase _rgDownloadTestCases[];
+	//static const DownloadTestCase _rgDownloadTestCases[];
 
-	/// States for stream download handler
+	/*** /// States for stream download handler
 	enum {
 		burst_state_first_ack,
 		burst_state_last_ack,

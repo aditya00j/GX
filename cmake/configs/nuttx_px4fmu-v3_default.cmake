@@ -22,9 +22,9 @@ set(config_module_list
 	drivers/frsky_telemetry
 	drivers/gps
 	drivers/hmc5883
-	drivers/hott
-	drivers/hott/hott_sensors
-	drivers/hott/hott_telemetry
+	#drivers/hott
+	#drivers/hott/hott_sensors
+	#drivers/hott/hott_telemetry
 	drivers/iridiumsbd
 	drivers/l3gd20
 	drivers/led
@@ -55,7 +55,7 @@ set(config_module_list
 	drivers/stm32/tone_alarm
 	drivers/tap_esc
 	drivers/trone
-	drivers/vmount
+	#drivers/vmount
 	modules/sensors
 
 	#
