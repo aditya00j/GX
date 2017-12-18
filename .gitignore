@@ -72,7 +72,7 @@ vectorcontrol/
 .idea
 cmake-build-*/
 
-posix-configs/SITL/init/test/*_generated
+Configs/posix-configs/SITL/init/test/*_generated
 
 parameters.md
 airframes.md

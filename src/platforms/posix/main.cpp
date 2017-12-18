@@ -245,7 +245,7 @@ static void usage()
 	cout << "   -d            - Optional flag to run the app in daemon mode and does not listen for user input." <<
 	     endl;
 	cout << "                   This is needed if px4 is intended to be run as a upstart job on linux" << endl;
-	cout << "<data_directory> - directory where ROMFS and posix-configs are located (if not given, CWD is used)" << endl;
+	cout << "<data_directory> - directory where ROMFS and Configs/posix-configs are located (if not given, CWD is used)" << endl;
 	cout << "<startup_config> - config file for starting/stopping px4 modules" << endl;
 	cout << "   -h            - help/usage information" << endl;
 }
@@ -401,7 +401,7 @@ int main(int argc, char **argv)
 	if (symlinks_needed) {
 		vector<string> path_sym_links;
 		path_sym_links.push_back("ROMFS");
-		path_sym_links.push_back("posix-configs");
+		path_sym_links.push_back("Configs/posix-configs");
 		path_sym_links.push_back("test_data");
 
 		for (int i = 0; i < path_sym_links.size(); i++) {

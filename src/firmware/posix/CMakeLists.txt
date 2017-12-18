@@ -40,7 +40,7 @@ if ("${BOARD}" STREQUAL "eagle" OR ("${BOARD}" STREQUAL "excelsior"))
 				OS ${OS}
 				BOARD ${BOARD}
 				FILES ${CMAKE_CURRENT_BINARY_DIR}/${APP_NAME}
-				${PX4_SOURCE_DIR}/posix-configs/eagle/flight/mainapp.config
+				${PX4_SOURCE_DIR}/Configs/posix-configs/eagle/flight/mainapp.config
 				DEPENDS ${APP_NAME}
 				DEST /home/linaro)
 
@@ -60,7 +60,7 @@ elseif ("${BOARD}" STREQUAL "rpi")
 		-Wl,--end-group
 		)
 
-	file(GLOB RPI_CONFIG_FILES ${PX4_SOURCE_DIR}/posix-configs/rpi/*.config)
+	file(GLOB RPI_CONFIG_FILES ${PX4_SOURCE_DIR}/Configs/posix-configs/rpi/*.config)
 	px4_add_scp_push(OUT ${UPLOAD_NAME}
 				OS ${OS}
 				BOARD ${BOARD}
@@ -138,7 +138,7 @@ endif()
 
 install(TARGETS px4 DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/ROMFS DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME})
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/posix-configs DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME})
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/Configs/posix-configs DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME})
 
 add_custom_target(strip
 			DEPENDS "${APP_NAME}.stripped"

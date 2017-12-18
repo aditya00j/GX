@@ -60,8 +60,8 @@ fi
 if [ ! -f $BASEDIR/cmake/configs/nuttx_"$oldname"_default.cmake -a ! -f $BASEDIR/cmake/configs/nuttx_"$oldname"_bootloader.cmake ]; then
 	fatal "\"$oldname\" doesn't look like an existing board name (there is neither a $BASEDIR/cmake/configs/nuttx_"$oldname"_default.cmake nor a $BASEDIR/cmake/configs/nuttx_"$oldname"_bootloader.cmake)"
 fi
-if [ ! -d $BASEDIR/nuttx-configs/$oldname ]; then
-	fatal "\"$oldname\" doesn't look like an existing board name (no such directory $BASEDIR/nuttx-configs/$oldname)"
+if [ ! -d $BASEDIR/Configs/nuttx-configs/$oldname ]; then
+	fatal "\"$oldname\" doesn't look like an existing board name (no such directory $BASEDIR/Configs/nuttx-configs/$oldname)"
 fi
 
 # Does the new name look like a new name?
@@ -79,9 +79,9 @@ if [ -f Images/$newname.prototype -o \
      -f cmake/configs/nuttx_"$newname"_default.cmake -o \
      -f cmake/configs/nuttx_"$newname"_bootloader.cmake -o \
      -d src/drivers/boards/$newname -o \
-     -d nuttx-configs/$newname ]; then
+     -d Configs/nuttx-configs/$newname ]; then
   echo "\"$newname\" already exists! Please first delete it with the following command (in $BASEDIR):"
-  echo "rm -rf Images/$newname.prototype cmake/configs/nuttx_"$newname"_default.cmake cmake/configs/nuttx_"$newname"_bootloader.cmake src/drivers/boards/$newname nuttx-configs/$newname"
+  echo "rm -rf Images/$newname.prototype cmake/configs/nuttx_"$newname"_default.cmake cmake/configs/nuttx_"$newname"_bootloader.cmake src/drivers/boards/$newname Configs/nuttx-configs/$newname"
   exit 1
 fi
 
@@ -117,8 +117,8 @@ done
 # Copy remaining files.
 cp Images/${oldname}.prototype Images/${newname}.prototype
 git add Images/${newname}.prototype
-cp -r nuttx-configs/${oldname} nuttx-configs/${newname}
-git add nuttx-configs/${newname}
+cp -r Configs/nuttx-configs/${oldname} Configs/nuttx-configs/${newname}
+git add Configs/nuttx-configs/${newname}
 cp -r src/drivers/boards/${oldname} src/drivers/boards/${newname}
 git add src/drivers/boards/${newname}
 if [[ $have_bootloader -eq 1 ]]; then
@@ -154,8 +154,8 @@ newconfig=CONFIG_ARCH_BOARD_$newboard
 # Fixup copied files.
 sed -i -r -e 's%(MODULE[[:space:]]+.*)'"$oldname"'%\1'"$newname"'%;s%^([[:space:]]+)'"$oldstem"'([0-9]*_'"$TYPE_RE"'\.)%\1'"$newstem"'\2%' "src/drivers/boards/${newname}/CMakeLists.txt"
 sed -i -r -e 's%"'"$oldboard"'"%"'"$newboard"'"%' "src/drivers/boards/${newname}/board_config.h"
-sed -i -r -e 's%'"$oldname"'%'"$newname"'%' "nuttx-configs/${newname}/nsh/Make.defs"
-sed -i -r -e 's%'"$oldname"'%'"$newname"'%;s%'"$oldconfig"'%'"$newconfig"'%;s%(CONFIG_CDCACM_PRODUCTSTR=)"([^"]*)"%\1"FIXME (was: \2)"%' "nuttx-configs/${newname}/nsh/defconfig"
+sed -i -r -e 's%'"$oldname"'%'"$newname"'%' "Configs/nuttx-configs/${newname}/nsh/Make.defs"
+sed -i -r -e 's%'"$oldname"'%'"$newname"'%;s%'"$oldconfig"'%'"$newconfig"'%;s%(CONFIG_CDCACM_PRODUCTSTR=)"([^"]*)"%\1"FIXME (was: \2)"%' "Configs/nuttx-configs/${newname}/nsh/defconfig"
 
 # If src/modules/gpio_led/gpio_led.c does not already contain it,
 # add defined($newconfig) where defined($oldconfig) exists.

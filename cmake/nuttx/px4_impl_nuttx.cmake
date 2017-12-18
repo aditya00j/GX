@@ -306,7 +306,7 @@ function(px4_nuttx_add_export)
 
 	# Read defconfig to see if CONFIG_ARMV7M_STACKCHECK is yes
 	# note: CONFIG will be BOARD in the future evaluation of ${hw_stack_check_${CONFIG}
-	file(STRINGS "${PX4_SOURCE_DIR}/nuttx-configs/${CONFIG}/${config_nuttx_config}/defconfig"
+	file(STRINGS "${PX4_SOURCE_DIR}/Configs/nuttx-configs/${CONFIG}/${config_nuttx_config}/defconfig"
 		hw_stack_check_${CONFIG}
 		REGEX "CONFIG_ARMV7M_STACKCHECK=y"
 		)
@@ -315,13 +315,13 @@ function(px4_nuttx_add_export)
 	endif()
 
 	# nuttx configure
-	file(GLOB_RECURSE nuttx-configs ${PX4_SOURCE_DIR}/nuttx-configs/${CONFIG}/*)
+	file(GLOB_RECURSE Configs/nuttx-configs ${PX4_SOURCE_DIR}/Configs/nuttx-configs/${CONFIG}/*)
 	add_custom_command(OUTPUT ${nuttx_configure_stamp} ${nuttx_build_src}/nuttx/.config
-		COMMAND ${CP} -rp ${PX4_SOURCE_DIR}/nuttx-configs/*.mk ${nuttx_build_src}/nuttx/
-		COMMAND ${CP} -rp ${PX4_SOURCE_DIR}/nuttx-configs/${CONFIG} ${nuttx_build_src}/nuttx/configs
+		COMMAND ${CP} -rp ${PX4_SOURCE_DIR}/Configs/nuttx-configs/*.mk ${nuttx_build_src}/nuttx/
+		COMMAND ${CP} -rp ${PX4_SOURCE_DIR}/Configs/nuttx-configs/${CONFIG} ${nuttx_build_src}/nuttx/configs
 		COMMAND cd ${nuttx_build_src}/nuttx/tools && sh configure.sh ${CONFIG}/${config_nuttx_config}
 		COMMAND cmake -E touch ${nuttx_configure_stamp}
-		DEPENDS nuttx_patch_${CONFIG} ${nuttx-configs}
+		DEPENDS nuttx_patch_${CONFIG} ${Configs/nuttx-configs}
 		WORKING_DIRECTORY ${PX4_BINARY_DIR}
 		COMMENT "Configuring NuttX for ${CONFIG} with ${config_nuttx_config}")
 	add_custom_target(nuttx_configure_${CONFIG} DEPENDS ${nuttx_configure_stamp} nuttx_patch_${CONFIG})
@@ -329,8 +329,8 @@ function(px4_nuttx_add_export)
 	# manual nuttx oldconfig helper
 	add_custom_target(oldconfig_${CONFIG}
 		COMMAND ${MAKE} --no-print-directory -C ${nuttx_build_src}/nuttx CONFIG_ARCH_BOARD=${CONFIG} oldconfig
-		COMMAND ${CP} ${nuttx_build_src}/nuttx/.config ${PX4_SOURCE_DIR}/nuttx-configs/${CONFIG}/${config_nuttx_config}/defconfig
-		COMMAND ${PX4_SOURCE_DIR}/Tools/nuttx_defconf_tool.sh ${PX4_SOURCE_DIR}/nuttx-configs/${CONFIG}/${config_nuttx_config}/defconfig
+		COMMAND ${CP} ${nuttx_build_src}/nuttx/.config ${PX4_SOURCE_DIR}/Configs/nuttx-configs/${CONFIG}/${config_nuttx_config}/defconfig
+		COMMAND ${PX4_SOURCE_DIR}/Tools/nuttx_defconf_tool.sh ${PX4_SOURCE_DIR}/Configs/nuttx-configs/${CONFIG}/${config_nuttx_config}/defconfig
 		DEPENDS nuttx_configure_${CONFIG}
 		WORKING_DIRECTORY ${nuttx_build_src}/nuttx
 		COMMENT "Running NuttX make oldconfig for ${CONFIG} with ${config_nuttx_config}"
@@ -339,8 +339,8 @@ function(px4_nuttx_add_export)
 	# manual nuttx menuconfig helper
 	add_custom_target(menuconfig_${CONFIG}
 		COMMAND ${MAKE} --no-print-directory -C ${nuttx_build_src}/nuttx CONFIG_ARCH_BOARD=${CONFIG} menuconfig
-		COMMAND ${CP} ${nuttx_build_src}/nuttx/.config ${PX4_SOURCE_DIR}/nuttx-configs/${CONFIG}/${config_nuttx_config}/defconfig
-		COMMAND ${PX4_SOURCE_DIR}/Tools/nuttx_defconf_tool.sh ${PX4_SOURCE_DIR}/nuttx-configs/${CONFIG}/${config_nuttx_config}/defconfig
+		COMMAND ${CP} ${nuttx_build_src}/nuttx/.config ${PX4_SOURCE_DIR}/Configs/nuttx-configs/${CONFIG}/${config_nuttx_config}/defconfig
+		COMMAND ${PX4_SOURCE_DIR}/Tools/nuttx_defconf_tool.sh ${PX4_SOURCE_DIR}/Configs/nuttx-configs/${CONFIG}/${config_nuttx_config}/defconfig
 		DEPENDS nuttx_configure_${CONFIG}
 		WORKING_DIRECTORY ${nuttx_build_src}/nuttx
 		COMMENT "Running NuttX make menuconfig for ${CONFIG} with ${config_nuttx_config}"
