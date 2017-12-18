@@ -16,4 +16,4 @@ uint16 counter  					# incremented by the writing thread everytime new data is s
 uint8 esc_count						# number of connected ESCs
 uint8 esc_connectiontype				# how ESCs connected to the system
 
-esc_report[8] esc
+#esc_report[8] esc

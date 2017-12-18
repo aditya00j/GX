@@ -82,7 +82,7 @@
 
 #include <uORB/uORB.h>
 #include <uORB/topics/actuator_controls.h>
-#include <uORB/topics/vehicle_control_mode.h>
+//#include <uORB/topics/vehicle_control_mode.h>
 #include <uORB/topics/parameter_update.h>
 #include <uORB/topics/battery_status.h>
 #include <uORB/topics/differential_pressure.h>
@@ -216,7 +216,7 @@ private:
 	/**
 	 * Check for changes in vehicle control mode.
 	 */
-	void		vehicle_control_mode_poll();
+	//void		vehicle_control_mode_poll();
 
 	/**
 	 * Check for changes in parameters.
@@ -405,7 +405,7 @@ Sensors::diff_pres_poll(struct sensor_combined_s &raw)
 	}
 }
 
-void
+/*void
 Sensors::vehicle_control_mode_poll()
 {
 	struct vehicle_control_mode_s vcontrol_mode;
@@ -418,7 +418,7 @@ Sensors::vehicle_control_mode_poll()
 		orb_copy(ORB_ID(vehicle_control_mode), _vcontrol_mode_sub, &vcontrol_mode);
 		_armed = vcontrol_mode.flag_armed;
 	}
-}
+}*/
 
 void
 Sensors::parameter_update_poll(bool forced)
@@ -576,7 +576,7 @@ Sensors::task_main()
 	 */
 	_diff_pres_sub = orb_subscribe(ORB_ID(differential_pressure));
 
-	_vcontrol_mode_sub = orb_subscribe(ORB_ID(vehicle_control_mode));
+	//_vcontrol_mode_sub = orb_subscribe(ORB_ID(vehicle_control_mode));
 
 	_params_sub = orb_subscribe(ORB_ID(parameter_update));
 
@@ -589,7 +589,7 @@ Sensors::task_main()
 
 	diff_pres_poll(raw);
 
-	_rc_update.rc_parameter_map_poll(_parameter_handles, true /* forced */);
+	//_rc_update.rc_parameter_map_poll(_parameter_handles, true /* forced */);
 
 	/* advertise the sensor_combined topic and make the initial publication */
 	_sensor_pub = orb_advertise(ORB_ID(sensor_combined), &raw);
@@ -638,7 +638,7 @@ Sensors::task_main()
 		perf_begin(_loop_perf);
 
 		/* check vehicle status for changes to publication state */
-		vehicle_control_mode_poll();
+		//vehicle_control_mode_poll();
 
 		/* the timestamp of the raw struct is updated by the gyro_poll() method (this makes the gyro
 		 * a mandatory sensor) */
@@ -683,7 +683,7 @@ Sensors::task_main()
 			parameter_update_poll();
 
 			/* check rc parameter map for updates */
-			_rc_update.rc_parameter_map_poll(_parameter_handles);
+			//_rc_update.rc_parameter_map_poll(_parameter_handles);
 		}
 
 		/* Look for new r/c input data */

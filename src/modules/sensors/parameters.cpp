@@ -103,12 +103,12 @@ int initialize_parameter_handles(ParameterHandles &parameter_handles)
 	parameter_handles.rc_map_aux5 = param_find("RC_MAP_AUX5");
 
 	/* RC to parameter mapping for changing parameters with RC */
-	for (int i = 0; i < rc_parameter_map_s::RC_PARAM_MAP_NCHAN; i++) {
-		char name[rc_parameter_map_s::PARAM_ID_LEN];
-		snprintf(name, rc_parameter_map_s::PARAM_ID_LEN, "RC_MAP_PARAM%d",
-			 i + 1); // shifted by 1 because param name starts at 1
-		parameter_handles.rc_map_param[i] = param_find(name);
-	}
+	//for (int i = 0; i < rc_parameter_map_s::RC_PARAM_MAP_NCHAN; i++) {
+	//	char name[rc_parameter_map_s::PARAM_ID_LEN];
+	//	snprintf(name, rc_parameter_map_s::PARAM_ID_LEN, "RC_MAP_PARAM%d",
+	//		 i + 1); // shifted by 1 because param name starts at 1
+	//	parameter_handles.rc_map_param[i] = param_find(name);
+	//}
 
 	parameter_handles.rc_map_flightmode = param_find("RC_MAP_FLTMODE");
 

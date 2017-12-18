@@ -76,7 +76,7 @@ public:
 	/**
 	 * Check for changes in rc_parameter_map
 	 */
-	void rc_parameter_map_poll(ParameterHandles &parameter_handles, bool forced = false);
+	//void rc_parameter_map_poll(ParameterHandles &parameter_handles, bool forced = false);
 
 	/**
 	 * update the RC functions. Call this when the parameters change.
@@ -111,7 +111,7 @@ private:
 
 
 	int		_rc_sub = -1;			/**< raw rc channels data subscription */
-	int		_rc_parameter_map_sub = -1;		/**< rc parameter map subscription */
+	//int		_rc_parameter_map_sub = -1;		/**< rc parameter map subscription */
 
 	orb_advert_t	_rc_pub = nullptr;		/**< raw r/c control topic */
 	orb_advert_t	_manual_control_pub = nullptr;	/**< manual control signal topic */
@@ -119,8 +119,8 @@ private:
 
 	struct rc_channels_s _rc;			/**< r/c channel data */
 
-	struct rc_parameter_map_s _rc_parameter_map;
-	float _param_rc_values[rc_parameter_map_s::RC_PARAM_MAP_NCHAN];	/**< parameter values for RC control */
+	//struct rc_parameter_map_s _rc_parameter_map;
+	//float _param_rc_values[rc_parameter_map_s::RC_PARAM_MAP_NCHAN];	/**< parameter values for RC control */
 
 	const Parameters &_parameters;
 

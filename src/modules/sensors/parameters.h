@@ -46,7 +46,7 @@
 #include <systemlib/param/param.h>
 #include <mathlib/mathlib.h>
 
-#include <uORB/topics/rc_parameter_map.h>
+//#include <uORB/topics/rc_parameter_map.h>
 
 
 namespace sensors
@@ -97,7 +97,7 @@ struct Parameters {
 	int rc_map_aux4;
 	int rc_map_aux5;
 
-	int rc_map_param[rc_parameter_map_s::RC_PARAM_MAP_NCHAN];
+	//int rc_map_param[rc_parameter_map_s::RC_PARAM_MAP_NCHAN];
 
 	int rc_map_flightmode;
 
@@ -185,11 +185,11 @@ struct ParameterHandles {
 	param_t rc_map_aux4;
 	param_t rc_map_aux5;
 
-	param_t rc_map_param[rc_parameter_map_s::RC_PARAM_MAP_NCHAN];
-	param_t rc_param[rc_parameter_map_s::RC_PARAM_MAP_NCHAN];	/**< param handles for the parameters which are bound
-							  to a RC channel, equivalent float values in the
-							  _parameters struct are not existing
-							  because these parameters are never read. */
+	//param_t rc_map_param[rc_parameter_map_s::RC_PARAM_MAP_NCHAN];
+	//param_t rc_param[rc_parameter_map_s::RC_PARAM_MAP_NCHAN];	/**< param handles for the parameters which are bound
+	//						  to a RC channel, equivalent float values in the
+	//						  _parameters struct are not existing
+	//						  because these parameters are never read. 
 
 	param_t rc_map_flightmode;
 

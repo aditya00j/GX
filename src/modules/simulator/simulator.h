@@ -249,11 +249,11 @@ private:
 #ifndef __PX4_QURT
 		,
 		_rc_channels_pub(nullptr),
-		_attitude_pub(nullptr),
+		//_attitude_pub(nullptr),
 		_gpos_pub(nullptr),
 		_lpos_pub(nullptr),
 		_actuator_outputs_sub{},
-		_vehicle_attitude_sub(-1),
+		//_vehicle_attitude_sub(-1),
 		_vehicle_status_sub(-1),
 		_hil_local_proj_ref(),
 		_hil_local_proj_inited(false),
@@ -263,7 +263,7 @@ private:
 		_hil_ref_timestamp(0),
 		_rc_input{},
 		_actuators{},
-		_attitude{},
+		//_attitude{},
 		_vehicle_status{}
 #endif
 	{
@@ -332,13 +332,13 @@ private:
 #ifndef __PX4_QURT
 	// uORB publisher handlers
 	orb_advert_t _rc_channels_pub;
-	orb_advert_t _attitude_pub;
+	//orb_advert_t _attitude_pub;
 	orb_advert_t _gpos_pub;
 	orb_advert_t _lpos_pub;
 
 	// uORB subscription handlers
 	int _actuator_outputs_sub[ORB_MULTI_MAX_INSTANCES];
-	int _vehicle_attitude_sub;
+	//int _vehicle_attitude_sub;
 	int _vehicle_status_sub;
 
 	// hil map_ref data
@@ -352,7 +352,7 @@ private:
 	// uORB data containers
 	struct rc_input_values _rc_input;
 	struct actuator_outputs_s _actuators[ORB_MULTI_MAX_INSTANCES];
-	struct vehicle_attitude_s _attitude;
+	//struct vehicle_attitude_s _attitude;
 	struct vehicle_status_s _vehicle_status;
 
 	void poll_topics();

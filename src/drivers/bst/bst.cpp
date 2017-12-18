@@ -268,7 +268,7 @@ void BST::start()
 {
 	_should_run = true;
 
-	_attitude_sub = orb_subscribe(ORB_ID(vehicle_attitude));
+	//_attitude_sub = orb_subscribe(ORB_ID(vehicle_attitude));
 	_gps_sub = orb_subscribe(ORB_ID(vehicle_gps_position));
 	_battery_sub = orb_subscribe(ORB_ID(battery_status));
 

@@ -131,7 +131,7 @@
 #include <px4_config.h>
 #include "drivers/drv_mixer.h"
 
-#include <uORB/topics/multirotor_motor_limits.h>
+//#include <uORB/topics/multirotor_motor_limits.h>
 
 #include "mixer_load.h"
 
@@ -642,7 +642,7 @@ private:
 
 
 	orb_advert_t			_limits_pub;
-	multirotor_motor_limits_s 	_limits;
+	//multirotor_motor_limits_s 	_limits;
 
 	union {
 		struct {

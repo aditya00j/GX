@@ -90,7 +90,7 @@
 #include <uORB/topics/parameter_update.h>
 #include <uORB/topics/safety.h>
 #include <uORB/topics/adc_report.h>
-#include <uORB/topics/multirotor_motor_limits.h>
+//#include <uORB/topics/multirotor_motor_limits.h>
 
 #ifdef HRT_PPM_CHANNEL
 # include <systemlib/ppm_decode.h>
@@ -1255,12 +1255,12 @@ PX4FMU::cycle()
 				float outputs[_max_actuators];
 				size_t mixed_num_outputs = _mixers->mix(outputs, _num_outputs, NULL);
 
-				/* publish mixer status */
+				/* publish mixer status 
 				multirotor_motor_limits_s multirotor_motor_limits = {};
 				multirotor_motor_limits.saturation_status = _mixers->get_saturation_status();
 
 				if (_to_mixer_status == nullptr) {
-					/* publish limits */
+					/* publish limits 
 					int instance = _class_instance;
 					_to_mixer_status = orb_advertise_multi(ORB_ID(multirotor_motor_limits), &multirotor_motor_limits, &instance,
 									       ORB_PRIO_DEFAULT);
@@ -1268,7 +1268,7 @@ PX4FMU::cycle()
 				} else {
 					orb_publish(ORB_ID(multirotor_motor_limits), _to_mixer_status, &multirotor_motor_limits);
 
-				}
+				}*/
 
 				/* disable unused ports by setting their output to NaN */
 				for (size_t i = 0; i < sizeof(outputs) / sizeof(outputs[0]); i++) {

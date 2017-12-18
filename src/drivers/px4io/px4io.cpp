@@ -80,13 +80,13 @@
 #include <uORB/topics/actuator_outputs.h>
 #include <uORB/topics/actuator_armed.h>
 #include <uORB/topics/safety.h>
-#include <uORB/topics/vehicle_control_mode.h>
+//#include <uORB/topics/vehicle_control_mode.h>
 #include <uORB/topics/vehicle_command.h>
 #include <uORB/topics/rc_channels.h>
 #include <uORB/topics/battery_status.h>
 #include <uORB/topics/servorail_status.h>
 #include <uORB/topics/parameter_update.h>
-#include <uORB/topics/multirotor_motor_limits.h>
+//#include <uORB/topics/multirotor_motor_limits.h>
 
 #include <debug.h>
 
@@ -289,7 +289,7 @@ private:
 	int			_t_actuator_controls_2;	///< actuator controls group 2 topic
 	int			_t_actuator_controls_3;	///< actuator controls group 3 topic
 	int			_t_actuator_armed;	///< system armed control topic
-	int 			_t_vehicle_control_mode;///< vehicle control mode topic
+	//int 			_t_vehicle_control_mode;///< vehicle control mode topic
 	int			_t_param;		///< parameter update topic
 	bool			_param_update_force;	///< force a parameter update
 	int			_t_vehicle_command;	///< vehicle command topic
@@ -534,7 +534,7 @@ PX4IO::PX4IO(device::Device *interface) :
 	_t_actuator_controls_2(-1),
 	_t_actuator_controls_3(-1),
 	_t_actuator_armed(-1),
-	_t_vehicle_control_mode(-1),
+	//_t_vehicle_control_mode(-1),
 	_t_param(-1),
 	_param_update_force(false),
 	_t_vehicle_command(-1),
@@ -960,13 +960,13 @@ PX4IO::task_main()
 	_t_actuator_controls_3 = orb_subscribe(ORB_ID(actuator_controls_3));
 	orb_set_interval(_t_actuator_controls_3, 33);		/* default to 30Hz */
 	_t_actuator_armed = orb_subscribe(ORB_ID(actuator_armed));
-	_t_vehicle_control_mode = orb_subscribe(ORB_ID(vehicle_control_mode));
+	//_t_vehicle_control_mode = orb_subscribe(ORB_ID(vehicle_control_mode));
 	_t_param = orb_subscribe(ORB_ID(parameter_update));
 	_t_vehicle_command = orb_subscribe(ORB_ID(vehicle_command));
 
 	if ((_t_actuator_controls_0 < 0) ||
 	    (_t_actuator_armed < 0) ||
-	    (_t_vehicle_control_mode < 0) ||
+	    //(_t_vehicle_control_mode < 0) ||
 	    (_t_param < 0) ||
 	    (_t_vehicle_command < 0)) {
 		warnx("subscription(s) failed");
@@ -1049,7 +1049,7 @@ PX4IO::task_main()
 			orb_check(_t_actuator_armed, &updated);
 
 			if (!updated) {
-				orb_check(_t_vehicle_control_mode, &updated);
+				//orb_check(_t_vehicle_control_mode, &updated);
 			}
 
 			if (updated) {
@@ -1442,10 +1442,10 @@ int
 PX4IO::io_set_arming_state()
 {
 	actuator_armed_s	armed;		///< system armed state
-	vehicle_control_mode_s	control_mode;	///< vehicle_control_mode
+	//vehicle_control_mode_s	control_mode;	///< vehicle_control_mode
 
 	int have_armed = orb_copy(ORB_ID(actuator_armed), _t_actuator_armed, &armed);
-	int have_control_mode = orb_copy(ORB_ID(vehicle_control_mode), _t_vehicle_control_mode, &control_mode);
+	//int have_control_mode = orb_copy(ORB_ID(vehicle_control_mode), _t_vehicle_control_mode, &control_mode);
 	_in_esc_calibration_mode = armed.in_esc_calibration_mode;
 
 	uint16_t set = 0;
@@ -2023,7 +2023,7 @@ PX4IO::io_publish_pwm_outputs()
 {
 	/* data we are going to fetch */
 	actuator_outputs_s outputs = {};
-	multirotor_motor_limits_s motor_limits;
+	//multirotor_motor_limits_s motor_limits;
 
 	outputs.timestamp = hrt_absolute_time();
 
@@ -2061,13 +2061,13 @@ PX4IO::io_publish_pwm_outputs()
 		return ret;
 	}
 
-	/* publish mixer status */
+	/* publish mixer status 
 	if (_to_mixer_status == nullptr) {
 		_to_mixer_status = orb_advertise(ORB_ID(multirotor_motor_limits), &motor_limits);
 
 	} else {
 		orb_publish(ORB_ID(multirotor_motor_limits), _to_mixer_status, &motor_limits);
-	}
+	}*/
 
 	return OK;
 }

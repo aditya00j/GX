@@ -120,7 +120,7 @@
 #include <uORB/uORB.h>
 #include <uORB/topics/vehicle_status.h>
 #include <uORB/topics/battery_status.h>
-#include <uORB/topics/vehicle_control_mode.h>
+//#include <uORB/topics/vehicle_control_mode.h>
 #include <uORB/topics/actuator_armed.h>
 #include <uORB/topics/vehicle_gps_position.h>
 #include <uORB/topics/safety.h>
@@ -196,7 +196,7 @@ private:
 
 	int vehicle_status_sub_fd;
 	int battery_status_sub_fd;
-	int vehicle_control_mode_sub_fd;
+	//int vehicle_control_mode_sub_fd;
 	int vehicle_gps_position_sub_fd;
 	int actuator_armed_sub_fd;
 	int safety_sub_fd;
@@ -292,7 +292,7 @@ BlinkM::BlinkM(int bus, int blinkm) :
 	systemstate_run(false),
 	vehicle_status_sub_fd(-1),
 	battery_status_sub_fd(-1),
-	vehicle_control_mode_sub_fd(-1),
+	//vehicle_control_mode_sub_fd(-1),
 	vehicle_gps_position_sub_fd(-1),
 	actuator_armed_sub_fd(-1),
 	safety_sub_fd(-1),
@@ -438,8 +438,8 @@ BlinkM::led()
 		battery_status_sub_fd = orb_subscribe(ORB_ID(battery_status));
 		orb_set_interval(battery_status_sub_fd, 250);
 
-		vehicle_control_mode_sub_fd = orb_subscribe(ORB_ID(vehicle_control_mode));
-		orb_set_interval(vehicle_control_mode_sub_fd, 250);
+		//vehicle_control_mode_sub_fd = orb_subscribe(ORB_ID(vehicle_control_mode));
+		//orb_set_interval(vehicle_control_mode_sub_fd, 250);
 
 		actuator_armed_sub_fd = orb_subscribe(ORB_ID(actuator_armed));
 		orb_set_interval(actuator_armed_sub_fd, 250);
@@ -516,7 +516,7 @@ BlinkM::led()
 		/* obtained data for the first file descriptor */
 		struct vehicle_status_s vehicle_status_raw = {};
 		struct battery_status_s battery_status = {};
-		struct vehicle_control_mode_s vehicle_control_mode = {};
+		//struct vehicle_control_mode_s vehicle_control_mode = {};
 		struct actuator_armed_s actuator_armed = {};
 		struct vehicle_gps_position_s vehicle_gps_position_raw = {};
 		struct safety_s safety = {};
@@ -527,7 +527,7 @@ BlinkM::led()
 
 		bool new_data_vehicle_status;
 		bool new_data_battery_status;
-		bool new_data_vehicle_control_mode;
+		//bool new_data_vehicle_control_mode;
 		bool new_data_actuator_armed;
 		bool new_data_vehicle_gps_position;
 		bool new_data_safety;
@@ -535,7 +535,7 @@ BlinkM::led()
 
 		int no_data_vehicle_status = 0;
 		int no_data_battery_status = 0;
-		int no_data_vehicle_control_mode = 0;
+		//int no_data_vehicle_control_mode = 0;
 		int no_data_actuator_armed = 0;
 		int no_data_vehicle_gps_position = 0;
 
@@ -566,7 +566,7 @@ BlinkM::led()
 			}
 		}
 
-		orb_check(vehicle_control_mode_sub_fd, &new_data_vehicle_control_mode);
+		/*orb_check(vehicle_control_mode_sub_fd, &new_data_vehicle_control_mode);
 
 		if (new_data_vehicle_control_mode) {
 			orb_copy(ORB_ID(vehicle_control_mode), vehicle_control_mode_sub_fd, &vehicle_control_mode);
@@ -578,7 +578,7 @@ BlinkM::led()
 			if (no_data_vehicle_control_mode >= 3) {
 				no_data_vehicle_control_mode = 3;
 			}
-		}
+		}*/
 
 		orb_check(actuator_armed_sub_fd, &new_data_actuator_armed);
 
@@ -700,9 +700,9 @@ BlinkM::led()
 						led_color_8 = LED_OFF;
 						led_blink = LED_BLINK;
 
-						if (new_data_vehicle_control_mode || no_data_vehicle_control_mode < 3) {
+						/*if (new_data_vehicle_control_mode || no_data_vehicle_control_mode < 3) {
 
-							/* indicate main control state */
+							/* indicate main control state 
 							if (vehicle_control_mode.flag_control_auto_enabled) {
 								led_color_4 = LED_BLUE;
 
@@ -720,7 +720,7 @@ BlinkM::led()
 							}
 
 							led_color_5 = led_color_4;
-						}
+						}*/
 
 						if (new_data_vehicle_gps_position || no_data_vehicle_gps_position < 3) {
 							/* handling used satus */
