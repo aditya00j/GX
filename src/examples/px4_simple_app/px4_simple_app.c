@@ -63,9 +63,9 @@ int px4_simple_app_main(int argc, char *argv[])
 	orb_set_interval(sensor_sub_fd, 200);
 
 	/* advertise attitude topic */
-	struct vehicle_attitude_s att;
-	memset(&att, 0, sizeof(att));
-	orb_advert_t att_pub = orb_advertise(ORB_ID(vehicle_attitude), &att);
+	//struct vehicle_attitude_s att;
+	//memset(&att, 0, sizeof(att));
+	//orb_advert_t att_pub = orb_advertise(ORB_ID(vehicle_attitude), &att);
 
 	/* one could wait for multiple topics with this technique, just using one here */
 	px4_pollfd_struct_t fds[] = {
@@ -110,11 +110,11 @@ int px4_simple_app_main(int argc, char *argv[])
 				/* set att and publish this information for other apps
 				 the following does not have any meaning, it's just an example
 				*/
-				att.q[0] = raw.accelerometer_m_s2[0];
-				att.q[1] = raw.accelerometer_m_s2[1];
-				att.q[2] = raw.accelerometer_m_s2[2];
+				//att.q[0] = raw.accelerometer_m_s2[0];
+				//att.q[1] = raw.accelerometer_m_s2[1];
+				//att.q[2] = raw.accelerometer_m_s2[2];
 
-				orb_publish(ORB_ID(vehicle_attitude), att_pub, &att);
+				//orb_publish(ORB_ID(vehicle_attitude), att_pub, &att);
 			}
 
 			/* there could be more file descriptors here, in the form like:

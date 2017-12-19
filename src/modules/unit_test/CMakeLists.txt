@@ -30,23 +30,11 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 ############################################################################
-
-include_directories(${PX4_SOURCE_DIR}/mavlink/include/mavlink)
-
 px4_add_module(
-	MODULE modules__mavlink__mavlink_tests
-	MAIN mavlink_tests
-	STACK_MAIN 5000
+	MODULE modules__unit_test
 	COMPILE_FLAGS
-		-DMAVLINK_FTP_UNIT_TEST
-		-DMavlinkStream=MavlinkStreamTest
-		-DMavlinkFTP=MavlinkFTPTest
 	SRCS
-		mavlink_tests.cpp
-		mavlink_ftp_test.cpp
-		../mavlink_stream.cpp
-		../mavlink_ftp.cpp
-		../mavlink.c
+		unit_test.cpp
 	DEPENDS
 		platforms__common
 	)

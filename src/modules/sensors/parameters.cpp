@@ -368,9 +368,9 @@ int update_parameters(const ParameterHandles &parameter_handles, Parameters &par
 	param_get(parameter_handles.rc_map_aux4, &(parameters.rc_map_aux4));
 	param_get(parameter_handles.rc_map_aux5, &(parameters.rc_map_aux5));
 
-	for (int i = 0; i < rc_parameter_map_s::RC_PARAM_MAP_NCHAN; i++) {
-		param_get(parameter_handles.rc_map_param[i], &(parameters.rc_map_param[i]));
-	}
+	//for (int i = 0; i < rc_parameter_map_s::RC_PARAM_MAP_NCHAN; i++) {
+		//param_get(parameter_handles.rc_map_param[i], &(parameters.rc_map_param[i]));
+	//}
 
 	param_get(parameter_handles.rc_map_flightmode, &(parameters.rc_map_flightmode));
 

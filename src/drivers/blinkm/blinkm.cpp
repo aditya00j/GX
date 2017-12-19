@@ -700,27 +700,27 @@ BlinkM::led()
 						led_color_8 = LED_OFF;
 						led_blink = LED_BLINK;
 
-						/*if (new_data_vehicle_control_mode || no_data_vehicle_control_mode < 3) {
+						///*if (new_data_vehicle_control_mode || no_data_vehicle_control_mode < 3) {
 
-							/* indicate main control state 
-							if (vehicle_control_mode.flag_control_auto_enabled) {
-								led_color_4 = LED_BLUE;
-
-							} else if (vehicle_control_mode.flag_control_position_enabled) {
-								led_color_4 = LED_GREEN;
-
-							} else if (vehicle_control_mode.flag_control_altitude_enabled) {
-								led_color_4 = LED_YELLOW;
-
-							} else if (vehicle_control_mode.flag_control_manual_enabled) {
-								led_color_4 = LED_WHITE;
-
-							} else {
-								led_color_4 = LED_OFF;
-							}
-
-							led_color_5 = led_color_4;
-						}*/
+						//	/* indicate main control state 
+						//	if (vehicle_control_mode.flag_control_auto_enabled) {
+						//		led_color_4 = LED_BLUE;
+//
+//							} else if (vehicle_control_mode.flag_control_position_enabled) {
+//								led_color_4 = LED_GREEN;
+//
+//							} else if (vehicle_control_mode.flag_control_altitude_enabled) {
+//								led_color_4 = LED_YELLOW;
+//
+//							} else if (vehicle_control_mode.flag_control_manual_enabled) {
+//								led_color_4 = LED_WHITE;
+//
+//							} else {
+//								led_color_4 = LED_OFF;
+//							}
+//
+//							led_color_5 = led_color_4;
+//						}*/
 
 						if (new_data_vehicle_gps_position || no_data_vehicle_gps_position < 3) {
 							/* handling used satus */

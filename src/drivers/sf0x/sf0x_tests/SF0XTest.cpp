@@ -1,4 +1,4 @@
-//#include <unit_test/unit_test.h>
+#include <unit_test/unit_test.h>
 
 #include <drivers/sf0x/sf0x_parser.h>
 
@@ -9,16 +9,16 @@
 
 extern "C" __EXPORT int sf0x_tests_main(int argc, char *argv[]);
 
-//class SF0XTest : public UnitTest
-//{
-//public:
-//	virtual bool run_tests();
+class SF0XTest : public UnitTest
+{
+public:
+	virtual bool run_tests();
 
-//private:
-//	bool sf0xTest();
-//};
+private:
+	bool sf0xTest();
+};
 
-/***bool SF0XTest::run_tests()
+bool SF0XTest::run_tests()
 {
 	ut_run_test(sf0xTest);
 
@@ -85,7 +85,7 @@ bool SF0XTest::sf0xTest()
 	}
 
 	return true;
-}   ***/
+}   
 
 //ut_declare_test_c(sf0x_tests_main)
 

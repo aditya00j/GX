@@ -1,4 +1,4 @@
-//#include <unit_test/unit_test.h>
+#include <unit_test/unit_test.h>
 
 #include <systemlib/err.h>
 
@@ -21,21 +21,21 @@
 
 extern "C" __EXPORT int rc_tests_main(int argc, char *argv[]);
 
-//class RCTest : public UnitTest
-//{
-//public:
-//	virtual bool run_tests();
+class RCTest : public UnitTest
+{
+public:
+	virtual bool run_tests();
 
-//private:
-//	bool dsmTest(const char *filepath, unsigned expected_chancount, unsigned expected_dropcount, unsigned chan0);
-//	bool dsmTest10Ch();
-//	bool dsmTest12Ch();
-//	bool sbus2Test();
-//	bool st24Test();
-//	bool sumdTest();
-//};
+private:
+	bool dsmTest(const char *filepath, unsigned expected_chancount, unsigned expected_dropcount, unsigned chan0);
+	bool dsmTest10Ch();
+	bool dsmTest12Ch();
+	bool sbus2Test();
+	bool st24Test();
+	bool sumdTest();
+};
 
-/***bool RCTest::run_tests()
+bool RCTest::run_tests()
 {
 	ut_run_test(dsmTest10Ch);
 	ut_run_test(dsmTest12Ch);
@@ -334,9 +334,9 @@ bool RCTest::sumdTest()
 	ut_test(ret == EOF);
 
 	return true;
-}***/
+}
 
 
 
-//ut_declare_test_c(rc_tests_main)
+ut_declare_test_c(rc_tests_main)
 

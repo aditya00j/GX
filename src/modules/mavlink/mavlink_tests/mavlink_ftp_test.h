@@ -36,11 +36,11 @@
 
 #pragma once
 
-//#include <unit_test/unit_test.h>
+#include <unit_test/unit_test.h>
 #include "../mavlink_bridge_header.h"
 #include "../mavlink_ftp.h"
 
-/***class MavlinkFtpTest : public UnitTest
+class MavlinkFtpTest : public UnitTest
 {
 public:
 	MavlinkFtpTest();
@@ -99,7 +99,7 @@ private:
 			       uint8_t				size,
 			       const uint8_t			*data,
 			       const MavlinkFTP::PayloadHeader	**payload_reply);
-	void _cleanup_microsd(void); ***/
+	void _cleanup_microsd(void); 
 
 	// A single download test case
 	struct DownloadTestCase {
@@ -110,9 +110,9 @@ private:
 	};
 
 	/// The set of test cases for download testing
-	//static const DownloadTestCase _rgDownloadTestCases[];
+	static const DownloadTestCase _rgDownloadTestCases[];
 
-	/*** /// States for stream download handler
+	/// States for stream download handler
 	enum {
 		burst_state_first_ack,
 		burst_state_last_ack,
@@ -127,8 +127,8 @@ private:
 
 	mavlink_file_transfer_protocol_t _reply_msg;
 
-	//static const char _unittest_microsd_dir[];
-	//static const char _unittest_microsd_file[];
-}; ***/
+	static const char _unittest_microsd_dir[];
+	static const char _unittest_microsd_file[];
+}; 
 
 bool mavlink_ftp_test(void);

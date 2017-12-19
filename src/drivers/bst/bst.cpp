@@ -287,20 +287,20 @@ void BST::cycle()
 	if (_should_run) {
 		bool updated = false;
 
-		orb_check(_attitude_sub, &updated);
+		//orb_check(_attitude_sub, &updated);
 
-		if (updated) {
-			vehicle_attitude_s att;
-			orb_copy(ORB_ID(vehicle_attitude), _attitude_sub, &att);
-			Quatf q(att.q);
-			Eulerf euler(q);
-			BSTPacket<BSTAttitude> bst_att = {};
-			bst_att.type = 0x1E;
-			bst_att.payload.roll = swap_int32(euler.phi() * 10000);
-			bst_att.payload.pitch = swap_int32(euler.theta() * 10000);
-			bst_att.payload.yaw = swap_int32(euler.psi() * 10000);
-			send_packet(bst_att);
-		}
+		//if (updated) {
+			//vehicle_attitude_s att;
+			//orb_copy(ORB_ID(vehicle_attitude), _attitude_sub, &att);
+			//Quatf q(att.q);
+			//Eulerf euler(q);
+			//BSTPacket<BSTAttitude> bst_att = {};
+			//bst_att.type = 0x1E;
+			//bst_att.payload.roll = swap_int32(euler.phi() * 10000);
+			//bst_att.payload.pitch = swap_int32(euler.theta() * 10000);
+			//bst_att.payload.yaw = swap_int32(euler.psi() * 10000);
+			//send_packet(bst_att);
+		//}
 
 		updated = false;
 		orb_check(_battery_sub, &updated);

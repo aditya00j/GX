@@ -262,8 +262,8 @@ function(px4_nuttx_add_export)
 		set(nuttx_patches_uses_terminal "USES_TERMINAL")
 	endif()
 
-	# nuttx-patches
-	add_subdirectory(${PX4_SOURCE_DIR}/nuttx-patches ${PX4_BINARY_DIR}/${CONFIG})
+	# Configs/nuttx-patches
+	add_subdirectory(${PX4_SOURCE_DIR}/Configs/nuttx-patches ${PX4_BINARY_DIR}/${CONFIG})
 
 	set(nuttx_build_src ${PX4_BINARY_DIR}/${CONFIG}/NuttX)
 	set(nuttx_export_dir ${nuttx_build_src}/nuttx/nuttx-export)
@@ -296,7 +296,7 @@ function(px4_nuttx_add_export)
 			COMMAND ${PATCH} --verbose -d ${nuttx_build_src} -s -p1 -N < ${patch}
 			COMMAND cmake -E touch ${patch_stamp}
 			DEPENDS nuttx_copy_${CONFIG} ${patch} ${last_patch}
-			COMMENT "${CONFIG}: nuttx-patches/${patch_file_name} applied"
+			COMMENT "${CONFIG}: Configs/nuttx-patches/${patch_file_name} applied"
 			${nuttx_patches_uses_terminal})
 
 		add_custom_target(${patch_name} DEPENDS ${patch_stamp})

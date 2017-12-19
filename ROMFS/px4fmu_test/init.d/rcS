@@ -2,7 +2,7 @@
 #
 # PX4FMU startup script for test hackery.
 #
-#set unit_test_failure 0
+set unit_test_failure 0
 
 uorb start
 
@@ -71,8 +71,8 @@ if px4io start
 then
 	echo "PX4IO OK"
 else
-#	set unit_test_failure 1
-	#set unit_test_failure_list "${unit_test_failure_list} px4io_start"
+	set unit_test_failure 1
+	set unit_test_failure_list "${unit_test_failure_list} px4io_start"
 fi
 
 if px4io checkcrc $io_file
@@ -90,14 +90,14 @@ else
 		else
 			echo "PX4IO restart failed"
 			tone_alarm MNGGG
-			#set unit_test_failure 1
-			#set unit_test_failure_list "${unit_test_failure_list} px4io_flash"
+			set unit_test_failure 1
+			set unit_test_failure_list "${unit_test_failure_list} px4io_flash"
 		fi
 	else
 		echo "PX4IO update failed"
 		tone_alarm MNGGG
-		#set unit_test_failure 1
-		#set unit_test_failure_list "${unit_test_failure_list} px4io_flash"
+		set unit_test_failure 1
+		set unit_test_failure_list "${unit_test_failure_list} px4io_flash"
 	fi
 fi
 
