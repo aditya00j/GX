@@ -46,7 +46,7 @@ set(config_module_list
 	#
 	drivers/sf0x/sf0x_tests
 	#drivers/test_ppm
-	lib/rc/rc_tests
+	#lib/rc/rc_tests
 	#modules/commander/commander_tests
 	lib/controllib/controllib_test
 	modules/mavlink/mavlink_tests

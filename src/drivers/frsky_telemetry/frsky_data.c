@@ -52,7 +52,7 @@
 
 #include <uORB/topics/battery_status.h>
 #include <uORB/topics/sensor_combined.h>
-#include <uORB/topics/vehicle_global_position.h>
+// #include <uORB/topics/vehicle_global_position.h>
 
 #include <drivers/drv_hrt.h>
 
@@ -92,11 +92,11 @@
 #define frac(f) (f - (int)f)
 
 static struct battery_status_s *battery_status;
-static struct vehicle_global_position_s *global_pos;
+// static struct vehicle_global_position_s *global_pos;
 static struct sensor_combined_s *sensor_combined;
 
 static int battery_status_sub = -1;
-static int vehicle_global_position_sub = -1;
+// static int vehicle_global_position_sub = -1;
 static int sensor_sub = -1;
 
 /**
@@ -105,15 +105,15 @@ static int sensor_sub = -1;
 bool frsky_init()
 {
 	battery_status = malloc(sizeof(struct battery_status_s));
-	global_pos = malloc(sizeof(struct vehicle_global_position_s));
+	// global_pos = malloc(sizeof(struct vehicle_global_position_s));
 	sensor_combined = malloc(sizeof(struct sensor_combined_s));
 
-	if (battery_status == NULL || global_pos == NULL || sensor_combined == NULL) {
+	if (battery_status == NULL || sensor_combined == NULL) {
 		return false;
 	}
 
 	battery_status_sub = orb_subscribe(ORB_ID(battery_status));
-	vehicle_global_position_sub = orb_subscribe(ORB_ID(vehicle_global_position));
+	// vehicle_global_position_sub = orb_subscribe(ORB_ID(vehicle_global_position));
 	sensor_sub = orb_subscribe(ORB_ID(sensor_combined));
 	return true;
 }
@@ -121,7 +121,7 @@ bool frsky_init()
 void frsky_deinit()
 {
 	free(battery_status);
-	free(global_pos);
+	// free(global_pos);
 	free(sensor_combined);
 }
 
@@ -190,11 +190,11 @@ void frsky_update_topics()
 	}
 
 	/* get a local copy of the global position data */
-	orb_check(vehicle_global_position_sub, &updated);
+	// orb_check(vehicle_global_position_sub, &updated);
 
-	if (updated) {
-		orb_copy(ORB_ID(vehicle_global_position), vehicle_global_position_sub, global_pos);
-	}
+	// if (updated) {
+		// orb_copy(ORB_ID(vehicle_global_position), vehicle_global_position_sub, global_pos);
+	// }
 }
 
 /**
@@ -227,11 +227,11 @@ void frsky_send_frame1(int uart)
 /**
  * Formats the decimal latitude/longitude to the required degrees/minutes.
  */
-static float frsky_format_gps(float dec)
-{
-	float dm_deg = (int) dec;
-	return (dm_deg * 100.0f) + (dec - dm_deg) * 60;
-}
+// static float frsky_format_gps(float dec)
+// {
+// 	float dm_deg = (int) dec;
+// 	return (dm_deg * 100.0f) + (dec - dm_deg) * 60;
+// }
 
 /**
  * Sends frame 2 (every 1000ms):
@@ -244,20 +244,20 @@ void frsky_send_frame2(int uart)
 	char lat_ns = 0, lon_ew = 0;
 	int sec = 0;
 
-	if (global_pos->timestamp != 0 && hrt_absolute_time() < global_pos->timestamp + 20000) {
-		time_t time_gps = global_pos->time_utc_usec / 1000000ULL;
-		struct tm *tm_gps = gmtime(&time_gps);
+	// if (global_pos->timestamp != 0 && hrt_absolute_time() < global_pos->timestamp + 20000) {
+	// 	time_t time_gps = global_pos->time_utc_usec / 1000000ULL;
+	// 	struct tm *tm_gps = gmtime(&time_gps);
 
-		course = (global_pos->yaw + M_PI_F) / M_PI_F * 180.0f;
-		lat    = frsky_format_gps(fabsf(global_pos->lat));
-		lat_ns = (global_pos->lat < 0) ? 'S' : 'N';
-		lon    = frsky_format_gps(fabsf(global_pos->lon));
-		lon_ew = (global_pos->lon < 0) ? 'W' : 'E';
-		speed  = sqrtf(global_pos->vel_n * global_pos->vel_n + global_pos->vel_e * global_pos->vel_e)
-			 * 25.0f / 46.0f;
-		alt    = global_pos->alt;
-		sec    = tm_gps->tm_sec;
-	}
+	// 	course = (global_pos->yaw + M_PI_F) / M_PI_F * 180.0f;
+	// 	lat    = frsky_format_gps(fabsf(global_pos->lat));
+	// 	lat_ns = (global_pos->lat < 0) ? 'S' : 'N';
+	// 	lon    = frsky_format_gps(fabsf(global_pos->lon));
+	// 	lon_ew = (global_pos->lon < 0) ? 'W' : 'E';
+	// 	speed  = sqrtf(global_pos->vel_n * global_pos->vel_n + global_pos->vel_e * global_pos->vel_e)
+	// 		 * 25.0f / 46.0f;
+	// 	alt    = global_pos->alt;
+	// 	sec    = tm_gps->tm_sec;
+	// }
 
 	frsky_send_data(uart, FRSKY_ID_GPS_COURS_BP, course);
 	frsky_send_data(uart, FRSKY_ID_GPS_COURS_AP, frac(course) * 1000.0f);
@@ -288,19 +288,19 @@ void frsky_send_frame2(int uart)
  * Sends frame 3 (every 5000ms):
  *   GPS date & time
  */
-void frsky_send_frame3(int uart)
-{
-	/* send formatted frame */
-	time_t time_gps = global_pos->time_utc_usec / 1000000ULL;
-	struct tm *tm_gps = gmtime(&time_gps);
-	uint16_t hour_min = (tm_gps->tm_min << 8) | (tm_gps->tm_hour & 0xff);
-	frsky_send_data(uart, FRSKY_ID_GPS_DAY_MONTH, tm_gps->tm_mday);
-	frsky_send_data(uart, FRSKY_ID_GPS_YEAR, tm_gps->tm_year);
-	frsky_send_data(uart, FRSKY_ID_GPS_HOUR_MIN, hour_min);
-	frsky_send_data(uart, FRSKY_ID_GPS_SEC, tm_gps->tm_sec);
+// void frsky_send_frame3(int uart)
+// {
+// 	/* send formatted frame */
+// 	// time_t time_gps = global_pos->time_utc_usec / 1000000ULL;
+// 	// struct tm *tm_gps = gmtime(&time_gps);
+// 	uint16_t hour_min = (tm_gps->tm_min << 8) | (tm_gps->tm_hour & 0xff);
+// 	frsky_send_data(uart, FRSKY_ID_GPS_DAY_MONTH, tm_gps->tm_mday);
+// 	frsky_send_data(uart, FRSKY_ID_GPS_YEAR, tm_gps->tm_year);
+// 	frsky_send_data(uart, FRSKY_ID_GPS_HOUR_MIN, hour_min);
+// 	frsky_send_data(uart, FRSKY_ID_GPS_SEC, tm_gps->tm_sec);
 
-	frsky_send_startstop(uart);
-}
+// 	frsky_send_startstop(uart);
+// }
 
 /* parse 11 byte frames */
 bool frsky_parse_host(uint8_t *sbuf, int nbytes, struct adc_linkquality *v)

@@ -91,14 +91,14 @@ void sPort_send_data(int uart, uint16_t id, uint32_t data);
 void sPort_send_BATV(int uart);
 void sPort_send_CUR(int uart);
 void sPort_send_ALT(int uart);
-void sPort_send_SPD(int uart);
+// void sPort_send_SPD(int uart);
 void sPort_send_VSPD(int uart, float speed);
 void sPort_send_FUEL(int uart);
 void sPort_send_GPS_LON(int uart);
 void sPort_send_GPS_LAT(int uart);
 void sPort_send_GPS_ALT(int uart);
-void sPort_send_GPS_SPD(int uart);
-void sPort_send_GPS_CRS(int uart);
+// void sPort_send_GPS_SPD(int uart);
+// void sPort_send_GPS_CRS(int uart);
 void sPort_send_GPS_TIME(int uart);
 
 void sPort_send_NAV_STATE(int uart);

@@ -390,7 +390,7 @@ static int frsky_telemetry_thread_main(int argc, char *argv[])
 				if (now - lastSPD > 200 * 1000) {
 					lastSPD = now;
 					/* send speed */
-					sPort_send_SPD(uart);
+					// sPort_send_SPD(uart);
 				}
 
 				break;
@@ -442,7 +442,7 @@ static int frsky_telemetry_thread_main(int argc, char *argv[])
 						break;
 
 					case 2:
-						sPort_send_GPS_CRS(uart);
+						// sPort_send_GPS_CRS(uart);
 						elementCount++;
 						break;
 
@@ -452,7 +452,7 @@ static int frsky_telemetry_thread_main(int argc, char *argv[])
 						break;
 
 					case 4:
-						sPort_send_GPS_SPD(uart);
+						//sPort_send_GPS_SPD(uart);
 						elementCount++;
 						break;
 
@@ -544,7 +544,7 @@ static int frsky_telemetry_thread_main(int argc, char *argv[])
 
 			/* Send frame 3 (every 5000ms): date, time */
 			if (iteration % 50 == 0) {
-				frsky_send_frame3(uart);
+				// frsky_send_frame3(uart);
 
 				iteration = 0;
 			}

@@ -1496,14 +1496,14 @@ PX4IO::io_set_arming_state()
 		}
 	}
 
-	if (have_control_mode == OK) {
-		if (control_mode.flag_external_manual_override_ok) {
-			set |= PX4IO_P_SETUP_ARMING_MANUAL_OVERRIDE_OK;
+	// if (have_control_mode == OK) {
+		// if (control_mode.flag_external_manual_override_ok) {
+		// 	set |= PX4IO_P_SETUP_ARMING_MANUAL_OVERRIDE_OK;
 
-		} else {
-			clear |= PX4IO_P_SETUP_ARMING_MANUAL_OVERRIDE_OK;
-		}
-	}
+		// } else {
+		// 	clear |= PX4IO_P_SETUP_ARMING_MANUAL_OVERRIDE_OK;
+		// }
+	// }
 
 	if (_last_written_arming_s != set || _last_written_arming_c != clear) {
 		_last_written_arming_s = set;
@@ -2055,7 +2055,7 @@ PX4IO::io_publish_pwm_outputs()
 	/* get mixer status flags from IO */
 	uint16_t mixer_status;
 	ret = io_reg_get(PX4IO_PAGE_STATUS, PX4IO_P_STATUS_MIXER, &mixer_status, sizeof(mixer_status) / sizeof(uint16_t));
-	motor_limits.saturation_status = mixer_status;
+	// motor_limits.saturation_status = mixer_status;
 
 	if (ret != OK) {
 		return ret;
